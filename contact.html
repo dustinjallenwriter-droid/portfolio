@@ -2,13 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>About – Dustin J Allen</title>
+  <title>Contact – Dustin J Allen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="CSS/app.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Quicksand:wght@300..700&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="app.css" />
+
+  <!-- Fonts (same as portfolio) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Quicksand:wght@300..700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 </head>
 <body>
   <main>
@@ -20,41 +23,107 @@
         </div>
         <nav>
           <ul class="nav-bar">
-                        <li><a href="aboutme.html">About Me</a></li>
-                        <li><a href="cv.html">CV</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="index.html">Home</a></li>
+            <li><a href="aboutme.html">About Me</a></li>
+            <li><a href="cv.html">CV</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.html">Home</a></li>
           </ul>
         </nav>
       </header>
 
-      <div class="main-content-body">
-        <section class="bio-short">
-          <p>
-            I'm a technical writer with a background in philosophy, education, and the arts. 
-            My writing career has taken me from scripting gold rush theatre and penning grant proposals for historic sites, to teaching students how to understand and write about obscure 18th century German philosophy, to developing UX copy in digital marketplaces.
-            The common thread? Clear, engaging communication that resonates with a diverse range of audiences.
-          </p>
-          <p>
-            I specialize in technical documentation, educational content, editing and proofreading, UX writing, and content strategy. 
-            I bring both rigor and creativity to my work, whether I’m building structured help systems or 
-            writing copy for a digital audience.
-          </p>
-          <p>
-            Outside of work, I pursue creative projects of many kinds: touring with my folk band, performing comedy, writing cultural analyses, volunteering in community education initiatives. 
-            I believe storytelling in all its forms contributes to a better world.
-          </p>
-          <p>
-            You can explore my <a href="portfolio.html">portfolio</a> for samples, 
-            view my <a href="CV.html">résumé</a>, or <a href="contact.html">get in touch</a>. 
-          </p>
-        </section>
-      </div>
+      <!-- Page content -->
+      <section class="portfolio-section">
+        <h2>Contact</h2>
+        <p class="lede">
+          I help teams turn complex ideas into clear, useful content. If you’re looking for technical documentation, editorial support, UX writing, or grant/ policy work, I’d love to hear from you.
+        </p>
+
+        <!-- Two-column layout: quick contact + form -->
+        <div class="contact-grid">
+          <!-- Quick contact card (inspired by Mario’s clarity) -->
+          <div class="contact-card">
+            <h3>Quick ways to reach me</h3>
+            <ul class="contact-list">
+              <li>
+                <strong>Email:</strong>
+                <a id="emailLink" href="mailto:dustinjallen.writer@gmail.com">dustinjallen.writer@gmail.com</a>
+                <button class="btn xs" type="button" id="copyBtn" aria-label="Copy email to clipboard">Copy</button>
+              </li>
+              <li>
+                <strong>Portfolio highlights:</strong>
+                <a href="portfolio.html">See my work</a>
+              </li>
+              <li>
+                <strong>Availability:</strong> Open to freelance and contract work.
+              </li>
+            </ul>
+            <p class="smallprint">Prefer email? Click the address above (or copy it) and I’ll get back to you shortly.</p>
+          </div>
+
+          <!-- Contact form card -->
+          <div class="contact-card">
+            <h3>Send a message</h3>
+
+            <!-- Option A (works on GitHub Pages): Formspree — replace with your endpoint -->
+            <!-- Get one free at https://formspree.io (no JS backend needed) -->
+            <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
+              <div class="form-group">
+                <label for="name">Name<span aria-hidden="true"> *</span></label>
+                <input id="name" name="name" type="text" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email<span aria-hidden="true"> *</span></label>
+                <input id="email" name="email" type="email" required>
+              </div>
+
+              <div class="form-group">
+                <label for="topic">Project type</label>
+                <select id="topic" name="topic">
+                  <option value="">Choose one (optional)</option>
+                  <option>Technical documentation</option>
+                  <option>Editing / Style guide</option>
+                  <option>UX writing / IA</option>
+                  <option>Grant / Policy</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message<span aria-hidden="true"> *</span></label>
+                <textarea id="message" name="message" rows="6" required></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn">Send message</button>
+                <a class="btn outline" href="mailto:dustinjallen.writer@gmail.com?subject=Project%20Inquiry">Email instead</a>
+              </div>
+
+              <!-- Accessibility / success note (Formspree can redirect; this is a graceful fallback) -->
+              <p class="smallprint">By submitting this form, you consent to being contacted about your inquiry.</p>
+            </form>
+
+            <!-- Option B (no third-party): remove the form above and keep only the mailto button -->
+          </div>
+        </div>
+      </section>
     </div>
   </main>
+
+  <script>
+    // Copy-to-clipboard for email
+    document.getElementById('copyBtn')?.addEventListener('click', function () {
+      const email = 'dustinjallen.writer@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        this.textContent = 'Copied!';
+        setTimeout(() => (this.textContent = 'Copy'), 1200);
+      });
+    });
+  </script>
 </body>
 </html>
+
 
 
 
