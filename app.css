@@ -1,0 +1,433 @@
+body {
+  margin: 0;
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: thin;
+  line-height: 1.65;
+  background: linear-gradient(120deg, #83b2ec 0%, #3f62d7 60%, #90d8e6 100%);
+  color: #fff;
+}
+
+
+.content-wrapper {
+    max-width: 900px;
+    margin: 40px auto 0 auto;
+    background: #201553;
+    border: 4px solid #373190;
+    border-radius: 20px;
+    padding: 36px;
+    box-shadow: 0 8px 28px rgba(44,44,80,0.16);
+}
+
+.main-content {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.main-content-body {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+    flex-wrap: wrap;
+    background:#dfc2d7;
+    color:  #1c1628; 
+}
+
+.bio-section {
+    flex: 1 1 320px;
+    max-width: 380px;
+    background:#dfc2d7;
+    color:  #191628;  
+    padding: 28px;
+    border-radius: 35px;
+    border-color: #ec87c0;
+
+
+}
+.image-section {
+    flex: 1 1 230px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 230px;
+}
+
+.image-section img {
+    border-radius: 15px;
+    max-width: 310px;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 4px 24px rgba(44,44,80,0.14);
+    background: #97caff;
+}
+
+.media img {
+  display: block;
+  margin: 0 auto;       /* centers horizontally */
+  max-width: 100%;      /* keeps them responsive */
+  height: auto;
+  border-radius: 12px;  /* optional: matches your pdf-box style */
+  box-shadow: 0 8px 28px rgba(44, 44, 80, 0.16); /* optional */
+  transition: transform 0.2s ease;
+  max-width: 288px;     /* cap width at ~3in */
+  max-height: 288px;    /* cap height at ~3in */
+  width: auto;          /* scale proportionally */
+  height: auto;
+  border-radius: 12px;  /* keep rounded corners */
+
+}
+
+.media img:hover {
+  transform: scale(1.02); /* optional subtle hover zoom */
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: left;
+    gap: 60px;
+    padding: 0;
+    margin: 15px 0 0 0;
+    list-style: none;
+    font-size: 1.1em;
+    border-top: 2px solid #838fec;      /* Light lavender accent */ ;
+    border-bottom: 2px solid #83a4ec;      /* Light lavender accent */
+    padding-bottom: 12px;
+    padding-top: 12px;
+    margin-bottom: 64px; /* Increased for more space */
+  }
+.nav-bar li {
+    cursor: pointer;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.nav-bar a,
+.nav-bar a:visited,
+.nav-bar a:active,
+.nav-bar a:focus {
+    color: #fff; /* or your actual navbar link color */
+    text-decoration: none;
+    transition: color 0.15s;
+
+}
+
+.nav-bar li:hover {
+    background: #5a8cc5;
+}
+
+.header-content h2 {
+    font-size: 1.15em;   /* Smaller font size */
+    font-weight: bold;  /* Removes bold */
+    color: #fdbdd9;
+}
+
+/* CV (Abridged) */
+.cv-intro {
+  padding: 20px 22px 8px;
+}
+
+.cv-intro h2 {
+  margin: 0 0 8px;
+  color: #0a2479; /* matches your header accent */
+}
+
+.cv-intro .btn {
+  display: inline-block;
+  margin: 20px 8px 0 0;
+  padding: 8px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #241d33;
+  background: #f7d5ea;
+  border: 2px solid #1e267d;
+  transition: transform 0.12s ease;
+}
+
+.cv-intro .btn:hover { transform: translateY(-1px); }
+
+.cv-intro .btn.outline {
+  color: #f7d5ea;
+  background: transparent;
+  border-color: #f7d5ea;
+}
+
+.cv-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: 18px;
+  padding: 18px 22px 8px;
+}
+
+.cv-card {
+  background: #dfc2d7;
+  color: #1c1628;
+  border-radius: 18px;
+  padding: 18px 18px 16px;
+  border: 2px solid #1f206b;
+  box-shadow: 0 4px 20px rgba(44,44,80,0.10);
+}
+
+.cv-card h3 {
+  margin: 0 0 10px;
+  color: #151853;
+  font-weight: 700;
+}
+
+.cv-card ul.tight {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.cv-card ul.tight li { margin: 6px 0; }
+
+/* Mobile defaults: stacked */
+.bio-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Make the sidebar a flex column so we can push the badge down */
+.bio-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* This line is the key to bottom-aligning the badge */
+.bio-sidebar .LI-profile-badge {
+  margin-top: auto; /* pushes the badge to the bottom of the sidebar */
+}
+
+/* Optional: keep badge from looking huge on small screens */
+.bio-sidebar .LI-profile-badge,
+.bio-sidebar .badge-base {
+  max-width: 280px;
+  align-self: center; /* center under text on mobile */
+}
+
+/* Layout for grant writing figure */
+.grant-grid {
+  display: flex;
+  justify-content: center;
+  gap: 24px;            /* space between the two items */
+  flex-wrap: wrap;      /* stacks them on small screens */
+  text-align: center;
+}
+
+.grant-item img {
+  display: block;
+  margin: 0 auto;
+  max-width: 240px;     /* slightly smaller than 3in */
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(44, 44, 80, 0.16);
+}
+
+.grant-item figcaption {
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+
+/* Tablet and up: side-by-side */
+@media (min-width: 768px) {
+  .bio-flex {
+    flex-direction: row;
+    align-items: stretch; /* let children control their own vertical alignment */
+    gap: 2rem;
+  }
+
+  .bio-text {
+    flex: 2;
+  }
+
+  .bio-sidebar {
+    flex: 1;
+    max-width: 300px;
+    /* stays a flex column; badge remains bottom-aligned via margin-top:auto */
+  }
+
+  .bio-sidebar .badge-base,
+  .bio-sidebar .LI-profile-badge {
+    align-self: stretch; /* align with sidebar edges on desktop */
+    max-width: 100%;
+  }
+}
+
+/* ——— Portfolio page ——— */
+
+.portfolio-intro h2 {
+  margin: 0 0 8px;
+  color: #151853; /* matches your header accent */
+}
+
+.portfolio .lede { margin: 0 0 8px; }
+.portfolio .intro-list { margin: 6px 0 16px; padding-left: 1.2rem; }
+
+/* TOC */
+.toc { margin: 18px 0; }
+.toc-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: #151853;     ;
+}
+.toc ul { padding-left: 1.2rem; margin: 0; 
+  line-height: 2.2;  /* increases vertical spacing inside the links */
+}
+.toc a { color: #151853 }
+
+/* Section blocks */
+.portfolio-section h2 {
+  color: #151853;     ;
+  margin: 0 0 8px;
+  line-height: 3;
+}
+.portfolio-section p { margin: 6px 0; }
+
+hr {
+  border: none;
+  border-top: 2px solid #83a4ec; /* fits your nav rule color */
+  margin: 24px 0;
+}
+
+/* Skills/Challenges grid */
+.meta {
+  display: grid;
+  gap: 14px;
+  margin: 12px 0;
+}
+.meta h3 {
+  margin: 0 0 6px;
+  color: #151853;
+}
+.meta ul { margin: 0; padding-left: 1.2rem; }
+
+/* PDF placeholder */
+.media { margin: 12px 0; }
+.media figcaption {
+  color: #1c1628;
+  opacity: 0.9;
+  font-size: 0.95rem;
+  margin-top: 6px;
+}
+
+.pdf-box {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: 2px dashed #1f206b;
+  border-radius: 14px;
+  text-decoration: none;
+  color: #151853;           /* dark indigo from your scheme */
+  font-weight: 700;
+  background: #dfc2d7;      /* matches main-content-body */
+  box-shadow: 0 2px 12px rgba(44,44,80,0.12) inset;
+}
+.pdf-box:hover { outline: 2px solid #373190; }
+
+h1, h2, h3 {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+
+/* Tablet+ enhancements */
+@media (min-width: 768px) {
+  .meta { grid-template-columns: 1fr 1fr; }
+}
+
+
+/* Mobile */
+@media (max-width: 720px) {
+  .cv-grid { grid-template-columns: 1fr; }
+}
+
+/* Responsive Mobile Styles */
+@media (max-width: 600px) {
+    .content-wrapper {
+        padding: 14px;
+    }
+    .main-content {
+        flex-direction: column;
+        gap: 22px;
+        align-items: flex-start;
+    }
+    .bio-section, .image-section {
+        max-width: 100%;
+        padding: 16px;
+    }
+   .bio-section {
+        padding: 16px;
+        margin-bottom: 0;
+    }
+    .nav-bar {
+        display: flex;
+        flex-wrap: wrap;      /* enable wrapping to more rows */
+        gap: 14px;            /* tighter gap on mobile */
+        justify-content: flex-start;
+        font-size: 0.96em;
+        padding-left: 8px;
+        padding-right: 8px;
+        width: 100%; 
+    }
+    .nav-bar li {
+        white-space: nowrap;  /* keeps nav label together */
+        min-width: 0;         /* allows items to shrink as needed */
+        padding: 4px 6px;
+        box-sizing: border-box;
+    }
+}
+
+
+@media (max-width: 768px) {
+  .bio-flex {
+    flex-direction: column;
+  }
+
+  .bio-sidebar {
+    max-width: 100%;
+  }
+}
+
+/* ===== NEW: Card styling for portfolio samples, spacing, and heading underlines ===== */
+
+/* Space between each sample card */
+.portfolio {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Card appearance for each sample */
+.portfolio-section {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+  padding: 24px;
+}
+
+/* Underline main headings inside cards */
+.portfolio-section > h2 {
+  padding-bottom: 6px;
+  margin-bottom: 16px;
+  border-bottom: 2px solid rgba(255,255,255,0.22);
+}
+
+/* Underline subheads (Skills, Challenges) */
+.portfolio-section h3 {
+  padding-bottom: 4px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.18);
+}
