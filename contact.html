@@ -32,95 +32,63 @@
         </nav>
       </header>
 
-      <!-- Page content -->
-      <section class="portfolio-section">
-        <h2>Contact</h2>
-        <p class="lede">
-          I help teams turn complex ideas into clear, useful content. If you’re looking for technical documentation, editorial support, UX writing, or grant/ policy work, I’d love to hear from you.
-        </p>
+    <!-- Page content -->
+<section class="portfolio-section">
+  <h2>Contact</h2>
+  <p class="lede">
+    I help teams turn complex ideas into clear, useful content. If you’re looking for technical documentation, editorial support, UX writing, or grant/policy work, I’d love to hear from you.
+  </p>
 
-        <!-- Two-column layout: quick contact + form -->
-        <div class="contact-grid">
-          <!-- Quick contact card (inspired by Mario’s clarity) -->
-          <div class="contact-card">
-            <h3>Quick ways to reach me</h3>
-            <ul class="contact-list">
-              <li>
-                <strong>Email:</strong>
-                <a id="emailLink" href="mailto:dustinjallen.writer@gmail.com">dustinjallen.writer@gmail.com</a>
-                <button class="btn xs" type="button" id="copyBtn" aria-label="Copy email to clipboard">Copy</button>
-              </li>
-              <li>
-                <strong>Portfolio highlights:</strong>
-                <a href="portfolio.html">See my work</a>
-              </li>
-              <li>
-                <strong>Availability:</strong> Open to freelance and contract work.
-              </li>
-            </ul>
-            <p class="smallprint">Prefer email? Click the address above (or copy it) and I’ll get back to you shortly.</p>
-          </div>
-
-          <!-- Contact form card -->
-          <div class="contact-card">
-            <h3>Send a message</h3>
-
-            <!-- Option A (works on GitHub Pages): Formspree — replace with your endpoint -->
-            <!-- Get one free at https://formspree.io (no JS backend needed) -->
-            <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
-              <div class="form-group">
-                <label for="name">Name<span aria-hidden="true"> *</span></label>
-                <input id="name" name="name" type="text" required>
-              </div>
-
-              <div class="form-group">
-                <label for="email">Email<span aria-hidden="true"> *</span></label>
-                <input id="email" name="email" type="email" required>
-              </div>
-
-              <div class="form-group">
-                <label for="topic">Project type</label>
-                <select id="topic" name="topic">
-                  <option value="">Choose one (optional)</option>
-                  <option>Technical documentation</option>
-                  <option>Editing / Style guide</option>
-                  <option>UX writing / IA</option>
-                  <option>Grant / Policy</option>
-                  <option>Other</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="message">Message<span aria-hidden="true"> *</span></label>
-                <textarea id="message" name="message" rows="6" required></textarea>
-              </div>
-
-              <div class="form-actions">
-                <button type="submit" class="btn">Send message</button>
-                <a class="btn outline" href="mailto:dustinjallen.writer@gmail.com?subject=Project%20Inquiry">Email instead</a>
-              </div>
-
-              <!-- Accessibility / success note (Formspree can redirect; this is a graceful fallback) -->
-              <p class="smallprint">By submitting this form, you consent to being contacted about your inquiry.</p>
-            </form>
-
-            <!-- Option B (no third-party): remove the form above and keep only the mailto button -->
-          </div>
-        </div>
-      </section>
+  <!-- Two-column layout: quick contact + email option -->
+  <div class="contact-grid">
+    <!-- Quick contact card -->
+    <div class="contact-card">
+      <h3>Quick ways to reach me</h3>
+      <ul class="contact-list">
+        <li>
+          <strong>Email:</strong>
+          <a id="emailLink" href="mailto:dustinjallen.writer@gmail.com">dustinjallen.writer@gmail.com</a>
+          <button class="btn xs" type="button" id="copyBtn" aria-label="Copy email to clipboard">Copy</button>
+        </li>
+        <li>
+          <strong>Portfolio highlights:</strong>
+          <a href="portfolio.html">See my work</a>
+        </li>
+        <li>
+          <strong>Availability:</strong> Open to freelance and contract work.
+        </li>
+      </ul>
+      <p class="smallprint">
+        Prefer email? Click the address above (or copy it) and I’ll get back to you shortly.
+      </p>
     </div>
-  </main>
 
-  <script>
-    // Copy-to-clipboard for email
-    document.getElementById('copyBtn')?.addEventListener('click', function () {
-      const email = 'dustinjallen.writer@gmail.com';
-      navigator.clipboard.writeText(email).then(() => {
-        this.textContent = 'Copied!';
-        setTimeout(() => (this.textContent = 'Copy'), 1200);
-      });
+    <!-- Mailto card (replaces form) -->
+    <div class="contact-card">
+      <h3>Send a message</h3>
+      <p>
+        The fastest way to reach me is by email. Click the button below to open your email client with my address pre-filled:
+      </p>
+      <a class="btn" href="mailto:dustinjallen.writer@gmail.com?subject=Project%20Inquiry">
+        Email me directly
+      </a>
+      <p class="smallprint">I reply within 1–2 business days.</p>
+    </div>
+  </div>
+</section>
+</div>
+</main>
+
+<script>
+  // Copy-to-clipboard for email
+  document.getElementById('copyBtn')?.addEventListener('click', function () {
+    const email = 'dustinjallen.writer@gmail.com';
+    navigator.clipboard.writeText(email).then(() => {
+      this.textContent = 'Copied!';
+      setTimeout(() => (this.textContent = 'Copy'), 1200);
     });
-  </script>
+  });
+</script>
 </body>
 </html>
 
