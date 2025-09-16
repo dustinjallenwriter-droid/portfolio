@@ -278,6 +278,43 @@ body {
   text-decoration-thickness: 2px;
 }
 
+/* Contact page theme */
+.contact-page .content-wrapper {
+  background: #dfc2d7;   /* light lavender background */
+  color: #1c1628;        /* dark indigo text */
+  border: 2px solid #1f206b;
+}
+
+.contact-page h1,
+.contact-page h2,
+.contact-page h3,
+.contact-page p,
+.contact-page li,
+.contact-page a {
+  color: #1c1628;        /* force dark text for all text elements */
+}
+
+/* Links on contact page */
+.contact-page a {
+  text-decoration: underline;
+  font-weight: 600;
+}
+.contact-page a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Contact cards blend with background */
+.contact-page .contact-card {
+  background: #fff;              /* slightly lighter than lavender for contrast */
+  color: #1c1628;
+  border: 1px solid #1f206b;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(44,44,80,0.1);
+}
+.contact-page .contact-card h3 {
+  color: #151853;
+}
+
 /* Buttons (matches your cv-intro .btn style) */
 .btn {
   display: inline-block;
@@ -504,6 +541,7 @@ h1, h2, h3 {
   margin-bottom: 10px;
   border-bottom: 1px solid rgba(255,255,255,0.18);
 }
+
 
 
 
