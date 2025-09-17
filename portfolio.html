@@ -167,6 +167,7 @@
                     <li>Figma prototype → web design handoff (HTML/CSS/JS)</li>
                     <li>Microcopy & interaction design</li>
                     <li>Iterative development</li>
+                    <li>Mobile-first & responsive design</li>
                   </ul>
                 </div>
                 <div>
@@ -417,7 +418,7 @@
             </div>
 
                 <figure class="media">
-                <!-- Image is clickable -->
+                <!-- Clickable image -->
                 <a href="https://storylinefever.substack.com/" target="_blank" rel="noopener noreferrer">
                     <img src="Simpsons.jpg" alt="Preview of The Simpsons Blog on Substack">
                 </a>
@@ -430,30 +431,31 @@
                 </figcaption>
                 </figure>
           </section>
+  
+              <footer class="page-footer">
+                <p><a href="#portfolio-heading">Back to top ↑</a></p>
+              </footer>
+            </section>
+          </div>
+        </div>
+      </main>
+    </body>
+      <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const here = location.hostname;
+      document.querySelectorAll('a[href]').forEach(a => {
+        const u = new URL(a.href, location.href);
+        const isExternal = u.hostname !== here;
+        const isPDF = u.pathname.toLowerCase().endsWith('.pdf');
+        if ((isExternal || isPDF) && a.target !== "_self") {
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+        }
+      });
+    });
+    </script>
+  </html>
 
-          <footer class="page-footer">
-            <p><a href="#portfolio-heading">Back to top ↑</a></p>
-          </footer>
-        </section>
-      </div>
-    </div>
-  </main>
-</body>
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const here = location.hostname;
-  document.querySelectorAll('a[href]').forEach(a => {
-    const u = new URL(a.href, location.href);
-    const isExternal = u.hostname !== here;
-    const isPDF = u.pathname.toLowerCase().endsWith('.pdf');
-    if ((isExternal || isPDF) && a.target !== "_self") {
-      a.target = "_blank";
-      a.rel = "noopener noreferrer";
-    }
-  });
-});
-</script>
-</html>
 
 
 
