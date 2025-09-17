@@ -6,15 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- CSS -->
-  <link rel="stylesheet" href="app.css" />
+  <link rel="stylesheet" href="CSS/app.css" />
 
-  <!-- Fonts (same as portfolio) -->
+  <!-- Fonts (same as your site) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Quicksand:wght@300..700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <body class="contact-page">
   <main>
     <div class="content-wrapper">
       <header>
@@ -25,7 +24,7 @@
         <nav>
           <ul class="nav-bar">
             <li><a href="aboutme.html">About Me</a></li>
-            <li><a href="cv.html">CV</a></li>
+            <li><a href="CV.html">CV</a></li>
             <li><a href="portfolio.html">Portfolio</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="index.html">Home</a></li>
@@ -33,65 +32,66 @@
         </nav>
       </header>
 
-    <!-- Page content -->
-<section class="portfolio-section">
-  <h2>Contact</h2>
-  <p class="lede">
-    I help teams turn complex ideas into clear, useful content. If you’re looking for technical documentation, editorial support, UX writing, or grant/policy work, I’d love to hear from you.
-  </p>
+      <!-- Pink content area with dark text (same as other pages) -->
+      <div class="main-content-body">
+        <section class="portfolio-section">
+          <h2>Contact</h2>
+          <p class="lede">
+            I help teams turn complex ideas into clear, useful content. If you’re looking for technical documentation, editorial support, UX writing, or grant/policy work, I’d love to hear from you.
+          </p>
 
-  <!-- Two-column layout: quick contact + email option -->
-  <div class="contact-grid">
-    <!-- Quick contact card -->
-    <div class="contact-card">
-      <h3>Quick ways to reach me</h3>
-      <ul class="contact-list">
-        <li>
-          <strong>Email:</strong>
-          <a id="emailLink" href="mailto:dustinjallen.writer@gmail.com">dustinjallen.writer@gmail.com</a>
-          <button class="btn xs" type="button" id="copyBtn" aria-label="Copy email to clipboard">Copy</button>
-        </li>
-        <li>
-          <strong>Portfolio highlights:</strong>
-          <a href="portfolio.html">See my work</a>
-        </li>
-        <li>
-          <strong>Availability:</strong> Open to freelance and contract work.
-        </li>
-      </ul>
-      <p class="smallprint">
-        Prefer email? Click the address above (or copy it) and I’ll get back to you shortly.
-      </p>
+          <!-- Two-card layout -->
+          <div class="contact-grid">
+            <!-- Quick contact -->
+            <div class="contact-card">
+              <h3>Reach out</h3>
+              <ul class="contact-list">
+                <li>
+                  <strong>Email:</strong>
+                  <a id="emailLink" href="mailto:dustinjallen.writer@gmail.com">dustinjallen.writer@gmail.com</a>
+                  <button class="btn xs" type="button" id="copyBtn" aria-label="Copy email to clipboard">Copy</button>
+                </li>
+                <li>
+                  <strong>Portfolio highlights:</strong>
+                  <a href="portfolio.html">See my work</a>
+                </li>
+                <li>
+                  <strong>Availability:</strong> Open to freelance and contract work.
+                </li>
+              </ul>
+              <p class="smallprint">Prefer email? Click the address above (or copy it) and I’ll get back to you shortly.</p>
+            </div>
+
+            <!-- Mailto “form” -->
+            <div class="contact-card">
+              <h3>Send a message</h3>
+              <p>
+                Click to send me an email:
+              </p>
+              <a class="btn" href="mailto:dustinjallen.writer@gmail.com?subject=Project%20Inquiry">
+              </a>
+              <p class="smallprint">I'll reply within a business day.</p>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
+  </main>
 
-    <!-- Mailto card (replaces form) -->
-    <div class="contact-card">
-      <h3>Send a message</h3>
-      <p>
-        The fastest way to reach me is by email. Click the button below to open your email client with my address pre-filled:
-      </p>
-      <a class="btn" href="mailto:dustinjallen.writer@gmail.com?subject=Project%20Inquiry">
-        Email me directly
-      </a>
-      <p class="smallprint">I reply within 1–2 business days.</p>
-    </div>
-  </div>
-</section>
-</div>
-</main>
-
-<script>
-  // Copy-to-clipboard for email
-  document.getElementById('copyBtn')?.addEventListener('click', function () {
-    const email = 'dustinjallen.writer@gmail.com';
-    navigator.clipboard.writeText(email).then(() => {
-      this.textContent = 'Copied!';
-      setTimeout(() => (this.textContent = 'Copy'), 1200);
+  <!-- Copy-to-clipboard -->
+  <script>
+    document.getElementById('copyBtn')?.addEventListener('click', function () {
+      const email = 'dustinjallen.writer@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        this.textContent = 'Copied!';
+        setTimeout(() => (this.textContent = 'Copy'), 1200);
+      });
     });
-  });
-</script>
+  </script>
 </body>
 </html>
+
+
 
 
 
