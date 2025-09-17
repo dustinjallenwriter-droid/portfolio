@@ -202,12 +202,6 @@ body {
   width: 100%;
   max-width: 100%;
 }
-
-/* This line is the key to bottom-aligning the badge */
-.bio-sidebar .LI-profile-badge {
-  margin-top: auto; /* pushes the badge to the bottom of the sidebar */
-}
-
 /* Optional: keep badge from looking huge on small screens */
 .bio-sidebar .LI-profile-badge,
 .bio-sidebar .badge-base {
@@ -511,6 +505,7 @@ h1, h2, h3 {
   background: #f7d5ea;
   border: 2px solid #1e267d;
   color: #241d
+
 
 
 
