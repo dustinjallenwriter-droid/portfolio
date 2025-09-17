@@ -469,6 +469,51 @@ h1, h2, h3 {
 
 
 
+/* ==== CONTACT PAGE: match site card look ==== */
+.contact-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 20px;
+  background: #dfc2d7; /* same as main-content-body */
+  padding: 0;
+}
+
+.contact-card {
+  flex: 1 1 320px;
+  background: #dfc2d7;
+  color: #1c1628;
+  border-radius: 18px;
+  border: 2px solid #1f206b;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(44,44,80,0.10);
+}
+
+.contact-card h3 {
+  font-family: 'Josefin Sans', sans-serif;
+  color: #151853;
+  margin: 0 0 10px;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(28,22,40,0.2);
+  padding-bottom: 6px;
+}
+
+.contact-card a {
+  color: #1c1628;
+  text-decoration: underline;
+}
+
+.contact-card a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.contact-card .btn {
+  background: #f7d5ea;
+  border: 2px solid #1e267d;
+  color: #241d
+
+
+
 
 
 
