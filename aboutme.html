@@ -67,9 +67,23 @@
     </div>
   </main>
   <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const here = location.hostname;
+  document.querySelectorAll('a[href]').forEach(a => {
+    const u = new URL(a.href, location.href);
+    const isExternal = u.hostname !== here;
+    const isPDF = u.pathname.toLowerCase().endsWith('.pdf');
+    if ((isExternal || isPDF) && a.target !== "_self") {
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+    }
+  });
+});
+</script>
 </body>
 </html>
+
 
 
 
