@@ -371,24 +371,24 @@ h1, h2, h3 {
 
 .callout {
   margin-top: 2rem;
-  padding: 1rem 1.5rem;
-  background-color: #f0f4ff;   /* light background */
-  border-left: 4px solid #3f62d7;  /* accent bar */
-  border-radius: 8px;
-  font-size: 0.95em;
-  color: #333;
+  padding: 0.75rem 1.25rem;
+  background-color: #f5e6f7;   /* lighter than lavender pink */
+  border-left: 4px solid #373190; /* same blue as CV page */
+  border-radius: 6px;
+  font-size: 0.85em;  /* smaller text */
+  color: #222;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* subtle shadow */
 }
 
 .callout a {
   font-weight: bold;
-  color: #3f62d7;
+  color: #373190;
   text-decoration: none;
 }
 
 .callout a:hover {
   text-decoration: underline;
 }
-
 
 /* Tablet+ enhancements */
 @media (min-width: 768px) {
@@ -525,6 +525,7 @@ h1, h2, h3 {
   background: #f7d5ea;
   border: 2px solid #1e267d;
   color: #241d
+
 
 
 
