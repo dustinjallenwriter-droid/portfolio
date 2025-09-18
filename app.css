@@ -369,6 +369,26 @@ h1, h2, h3 {
   font-family: 'Josefin Sans', sans-serif;
 }
 
+.callout {
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
+  background-color: #f0f4ff;   /* light background */
+  border-left: 4px solid #3f62d7;  /* accent bar */
+  border-radius: 8px;
+  font-size: 0.95em;
+  color: #333;
+}
+
+.callout a {
+  font-weight: bold;
+  color: #3f62d7;
+  text-decoration: none;
+}
+
+.callout a:hover {
+  text-decoration: underline;
+}
+
 
 /* Tablet+ enhancements */
 @media (min-width: 768px) {
@@ -428,7 +448,7 @@ h1, h2, h3 {
   }
 }
 
-/* ===== NEW: Card styling for portfolio samples, spacing, and heading underlines ===== */
+/* ===== Card styling for portfolio samples, spacing, and heading underlines ===== */
 
 /* Space between each sample card */
 .portfolio {
@@ -505,6 +525,7 @@ h1, h2, h3 {
   background: #f7d5ea;
   border: 2px solid #1e267d;
   color: #241d
+
 
 
 
