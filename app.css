@@ -483,3 +483,73 @@ body { background: #FFF8EC; color: #1F1A14; }
 
 
 
+/* ===== Restore index layout + CV panels ===== */
+
+/* Index: side-by-side on tablet/desktop, stacked on mobile */
+.main-content {
+  display: flex;
+  flex-direction: column;     /* mobile default */
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* Bio card look (keeps cream theme) */
+.bio-section {
+  background: #FFF3E0;
+  border: 1px solid #E6DCCF;
+  border-radius: 20px;
+  padding: 24px;
+}
+
+/* Headshot sizing */
+.image-section { display: flex; justify-content: center; align-items: center; }
+.image-section img {
+  width: 100%;
+  max-width: 320px;           /* keeps photo from growing huge */
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+/* Tablet+ puts photo to the RIGHT of the blurb */
+@media (min-width: 768px) {
+  .main-content {
+    flex-direction: row;      /* side-by-side */
+    align-items: flex-start;
+  }
+  .bio-section { flex: 2 1 460px; }
+  .image-section { flex: 1 1 260px; min-width: 240px; }
+}
+
+/* CV grid & cards */
+.cv-grid {
+  display: grid;
+  grid-template-columns: 1fr;     /* mobile: 1 col */
+  gap: 18px;
+  padding: 18px 22px 8px;
+}
+@media (min-width: 768px) {
+  .cv-grid { grid-template-columns: repeat(2, minmax(260px, 1fr)); } /* desktop: 2 cols */
+}
+.cv-card {
+  background: #FFF3E0;
+  color: #1F1A14;
+  border: 1px solid #E6DCCF;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+.cv-card h3 {
+  margin: 0 0 10px;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(31,26,20,0.15);
+  padding-bottom: 6px;
+}
+.cv-card ul.tight { margin: 0; padding-left: 18px; }
+.cv-card ul.tight li { margin: 6px 0; }
+
+/* Safety: kill any old header overlay that might tint pages */
+.header-content::before { content: none !important; }
+
+
+
