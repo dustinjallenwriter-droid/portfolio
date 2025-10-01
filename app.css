@@ -1,30 +1,36 @@
 /* =========================================
-   Dustin J Allen – Clean Cream Theme
-   - Single source of truth (no duplicates)
-   - Uses Quicksand (body) + Josefin Sans (headings)
-   - Warm cream palette with blue accent
+   Dustin J Allen – Cream + Color Accents
+   - Warm base with bold section accents
+   - Auto-maps colors to your existing IDs
    ========================================= */
 
-/* ---------- Color tokens ---------- */
+/* ---------- Tokens ---------- */
 :root{
-  --cream:   #FFF8EC;   /* buttery off-white (page) */
-  --cream-2: #FFF3E0;   /* card/surfaces */
-  --cream-3: #F6E9D4;   /* panels/accents */
-  --ink:     #1F1A14;   /* warm near-black text */
+  /* base */
+  --cream:   #FFF8EC;   /* page */
+  --cream-2: #FFF3E0;   /* cards */
+  --cream-3: #F6E9D4;   /* panels */
+  --ink:     #1F1A14;   /* warm near-black */
   --muted:   #5E564E;   /* secondary text */
-  --line:    #E6DCCF;   /* borders/rules */
-
-  --blue:    #1F6D8C;   /* primary accent */
-  --blue-2:  #0F3643;   /* darker accent/ink */
-
+  --line:    #E6DCCF;   /* borders */
   --shadow:  0 8px 24px rgba(31,26,20,.08), 0 2px 6px rgba(31,26,20,.06);
+
+  /* vivid accent family (aligned to your portfolio) */
+  --acc-blue:   #2268D6;  /* royal/indigo */
+  --acc-rust:   #C65A2B;  /* warm rust */
+  --acc-gold:   #F1B100;  /* golden yellow */
+  --acc-sage:   #3B8F7B;  /* teal/sage */
+  --acc-orchid: #9B3BB2;  /* purple punch */
+
+  /* default button/link accents */
+  --blue:   var(--acc-blue);
+  --blue-2: #0F3643;
 }
 
 /* ---------- Base ---------- */
 *,
 *::before,
 *::after { box-sizing: border-box; }
-
 html, body { height: 100%; }
 
 body{
@@ -35,7 +41,6 @@ body{
   color: var(--ink);
 }
 
-/* Headings */
 h1, h2, h3{
   font-family: "Josefin Sans", sans-serif;
   color: var(--ink);
@@ -43,7 +48,6 @@ h1, h2, h3{
   margin: 0 0 .5rem;
 }
 
-/* Links */
 a{
   color: var(--blue);
   text-decoration: underline;
@@ -51,20 +55,20 @@ a{
   text-decoration-thickness: .08em;
 }
 a:hover{ color: var(--blue-2); }
+
 :focus-visible{
   outline: 3px solid color-mix(in oklab, var(--blue) 70%, white);
   outline-offset: 3px;
   border-radius: 6px;
 }
 
-/* Horizontal rule */
 hr{
   border: none;
   border-top: 1px solid var(--line);
   margin: 24px 0;
 }
 
-/* ---------- Layout containers ---------- */
+/* ---------- Shell ---------- */
 .content-wrapper{
   max-width: 900px;
   margin: 40px auto 0 auto;
@@ -76,24 +80,24 @@ hr{
   color: var(--ink);
 }
 
-.main-content{
-  display: flex;
-  gap: 36px;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+/* header band (soft colorful wash like your PDF sections) */
+.header-content{
+  position: relative;
+  padding-top: 10px;
 }
-
-.main-content-body{
-  display: block;
-  border-radius: 20px;
-  background: var(--cream-3);
-  color: var(--ink);
-  border: 1px solid var(--line);
-  padding: 24px;
+.header-content::before{
+  content:"";
+  position: absolute; inset: -12px -24px auto -24px;
+  height: 64px;
+  border-radius: 18px 18px 8px 8px;
+  background:
+    linear-gradient(110deg,
+      color-mix(in oklab, var(--cream-2) 60%, var(--acc-blue) 40%) 0%,
+      color-mix(in oklab, var(--cream-2) 65%, var(--acc-orchid) 35%) 60%,
+      color-mix(in oklab, var(--cream-2) 70%, var(--acc-gold) 30%) 100%);
+  opacity: .14;
+  pointer-events: none;
 }
-
-/* ---------- Header / Nav ---------- */
 .header-content h1{ margin-bottom: .25rem; }
 .header-content h2{
   font-size: 1.15em;
@@ -102,6 +106,7 @@ hr{
   margin: 0;
 }
 
+/* ---------- Nav ---------- */
 .nav-bar{
   display: flex;
   justify-content: flex-start;
@@ -127,35 +132,34 @@ hr{
   text-decoration: none;
   transition: color .15s ease;
 }
-.nav-bar li:hover{
-  background: rgba(31,109,140,0.08);
+/* colorful hover underline */
+.nav-bar a{ position: relative; }
+.nav-bar a::after{
+  content:"";
+  position: absolute; left: 0; right: 0; bottom: -12px;
+  height: 3px; transform: scaleX(0); transform-origin: left;
+  transition: transform .18s ease;
+  background: linear-gradient(90deg, var(--acc-blue), var(--acc-gold));
+  border-radius: 3px;
+}
+.nav-bar a:hover::after,
+.nav-bar a:focus-visible::after{ transform: scaleX(1); }
+
+/* ---------- Panels ---------- */
+.main-content-body{
+  border-radius: 20px;
+  background: var(--cream-3);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  padding: 24px;
 }
 
-/* ---------- Bio / Image ---------- */
 .bio-section{
-  flex: 1 1 320px;
-  max-width: 700px;
   background: var(--cream-2);
   color: var(--ink);
   padding: 28px;
   border-radius: 20px;
   border: 1px solid var(--line);
-}
-
-.image-section{
-  flex: 1 1 230px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 230px;
-}
-.image-section img{
-  border-radius: 15px;
-  max-width: 310px;
-  width: 100%;
-  height: auto;
-  background: transparent;
-  box-shadow: var(--shadow);
 }
 
 /* ---------- Buttons ---------- */
@@ -165,79 +169,43 @@ hr{
   border-radius: 10px;
   text-decoration: none;
   color: #fff;
-  background: var(--blue);
+  background: var(--acc-blue);
   border: 1px solid rgba(0,0,0,.08);
   box-shadow: var(--shadow);
   transition: transform .12s ease;
 }
 .btn:hover{ transform: translateY(-1px); }
-
 .btn.outline{
   background: var(--cream-2);
   color: var(--ink);
   border: 1px solid var(--line);
 }
-.btn.xs{
-  padding: 6px 10px;
-  font-size: .9rem;
-  margin-left: 8px;
-}
+.btn.xs{ padding: 6px 10px; font-size: .9rem; margin-left: 8px; }
 
-/* ---------- CV blocks (safe to keep even if not on page) ---------- */
-.cv-intro{ padding: 20px 22px 8px; }
-.cv-intro h2{ margin: 0 0 8px; color: var(--blue-2); }
-
-.cv-grid{
-  display: grid;
-  grid-template-columns: repeat(2, minmax(260px, 1fr));
-  gap: 18px;
-  padding: 18px 22px 8px;
-}
-
-.cv-card{
-  background: var(--cream-2);
-  color: var(--ink);
-  border-radius: 18px;
-  padding: 18px 18px 16px;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
-}
-.cv-card h3{
-  margin: 0 0 10px;
-  color: var(--ink);
-  font-weight: 700;
-}
-.cv-card ul.tight{
-  margin: 0;
-  padding-left: 18px;
-}
-.cv-card ul.tight li{ margin: 6px 0; }
+/* quick button color helpers (optional) */
+.btn.blue   { background: var(--acc-blue); }
+.btn.rust   { background: var(--acc-rust); }
+.btn.gold   { background: var(--acc-gold); color:#1F1A14; }
+.btn.sage   { background: var(--acc-sage); }
+.btn.orchid { background: var(--acc-orchid); }
 
 /* ---------- Portfolio ---------- */
 .portfolio{ display: flex; flex-direction: column; gap: 32px; }
 
-.portfolio-intro h2{
-  margin: 0 0 8px;
-  color: var(--ink);
-}
+.portfolio-intro h2{ margin: 0 0 8px; }
 .portfolio .lede{ margin: 0 0 8px; color: var(--muted); }
 .portfolio .intro-list{ margin: 6px 0 16px; padding-left: 1.2rem; color: var(--muted); }
 
 .toc{ margin: 18px 0; }
 .toc-title{
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin: 0 0 6px;
-  color: var(--ink);
+  font-size: 1.05rem; font-weight: 700; margin: 0 0 6px;
 }
-.toc ul{
-  padding-left: 1.2rem;
-  margin: 0;
-  line-height: 2.2;
-}
+.toc ul{ padding-left: 1.2rem; margin: 0; line-height: 2.2; }
 .toc a{ color: var(--ink); }
 
 .portfolio-section{
+  position: relative;
+  overflow: clip;
   background: var(--cream-2);
   border: 1px solid var(--line);
   border-radius: 16px;
@@ -257,222 +225,190 @@ hr{
 }
 .portfolio-section p{ margin: 6px 0; color: var(--muted); }
 
-/* Skills/Challenges grid */
-.meta{
-  display: grid;
-  gap: 14px;
-  margin: 12px 0;
-}
-.meta ul{ margin: 0; padding-left: 1.2rem; color: var(--muted); }
-
-/* Media blocks (images, pdf placeholders) */
+/* media */
 .media{ margin: 12px 0; }
 .media img{
-  display: block;
-  margin: 0 auto;
-  max-width: 100%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: var(--shadow);
+  display: block; margin: 0 auto;
+  max-width: 100%; height: auto;
+  border-radius: 12px; box-shadow: var(--shadow);
   transition: transform .2s ease;
-  max-width: 288px;  /* cap to ~3in if desired */
-  max-height: 288px;
+  max-width: 288px; max-height: 288px;
 }
 .media img:hover{ transform: scale(1.02); }
 .media figcaption{
-  color: var(--muted);
-  opacity: .95;
-  font-size: .95rem;
-  margin-top: 6px;
+  color: var(--muted); opacity: .95; font-size: .95rem; margin-top: 6px;
 }
 
+/* pdf box */
 .pdf-box{
-  display: grid;
-  place-items: center;
-  width: 100%;
-  aspect-ratio: 16/9;
+  display: grid; place-items: center; width: 100%; aspect-ratio: 16/9;
   border: 1px dashed var(--blue-2);
-  border-radius: 14px;
-  text-decoration: none;
-  color: var(--blue-2);
-  font-weight: 700;
+  border-radius: 14px; color: var(--blue-2); font-weight: 700;
   background: var(--cream-3);
   box-shadow: inset 0 2px 12px rgba(31,26,20,.06);
 }
 .pdf-box:hover{ outline: 2px solid var(--blue-2); }
 
-/* Grant tiles */
-.grant-grid{
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
-  text-align: center;
-}
-.grant-item img{
-  display: block;
-  margin: 0 auto;
-  max-width: 240px;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-}
-.grant-item figcaption{
-  margin-top: 8px;
-  font-size: .95rem;
-  color: var(--muted);
+/* ---------- Section Accent System (AUTO by ID) ----------
+   Adds a bold color ribbon + tinted borders like your PDF.
+   You don't need to edit HTML; IDs are already present.
+   ------------------------------------------------------- */
+
+/* helper mixins via multi rules */
+.portfolio-section::before{
+  content:""; position:absolute; inset:0 auto auto 0; height:8px; width:100%;
 }
 
-/* Footer */
-.page-footer p{ margin: 0; }
+/* BLUE — Hypernomicon user guide */
+#seneca-user-guide{
+  border-color: color-mix(in oklab, var(--acc-blue) 40%, var(--line) 60%);
+}
+#seneca-user-guide > h2{
+  border-bottom-color: color-mix(in oklab, var(--acc-blue) 35%, var(--line) 65%);
+}
+#seneca-user-guide::before{
+  background: linear-gradient(90deg, var(--acc-blue), color-mix(in oklab, var(--acc-blue) 25%, white 75%));
+}
 
-/* ---------- Contact (safe to keep) ---------- */
+/* ORCHID — DICE style guide */
+#seneca-style-guide{
+  border-color: color-mix(in oklab, var(--acc-orchid) 40%, var(--line) 60%);
+}
+#seneca-style-guide > h2{
+  border-bottom-color: color-mix(in oklab, var(--acc-orchid) 35%, var(--line) 65%);
+}
+#seneca-style-guide::before{
+  background: linear-gradient(90deg, var(--acc-orchid), color-mix(in oklab, var(--acc-orchid) 25%, white 75%));
+}
+
+/* GOLD — TTCWatch */
+#seneca-ttcwatch{
+  border-color: color-mix(in oklab, var(--acc-gold) 40%, var(--line) 60%);
+}
+#seneca-ttcwatch > h2{
+  border-bottom-color: color-mix(in oklab, var(--acc-gold) 35%, var(--line) 65%);
+}
+#seneca-ttcwatch::before{
+  background: linear-gradient(90deg, var(--acc-gold), color-mix(in oklab, var(--acc-gold) 25%, white 75%));
+}
+
+/* SAGE — Jimmy’s site */
+#seneca-jimmys{
+  border-color: color-mix(in oklab, var(--acc-sage) 40%, var(--line) 60%);
+}
+#seneca-jimmys > h2{
+  border-bottom-color: color-mix(in oklab, var(--acc-sage) 35%, var(--line) 65%);
+}
+#seneca-jimmys::before{
+  background: linear-gradient(90deg, var(--acc-sage), color-mix(in oklab, var(--acc-sage) 25%, white 75%));
+}
+
+/* RUST — Vehicle policy */
+#barkerville-policy{
+  border-color: color-mix(in oklab, var(--acc-rust) 40%, var(--line) 60%);
+}
+#barkerville-policy > h2{
+  border-bottom-color: color-mix(in oklab, var(--acc-rust) 35%, var(--line) 65%);
+}
+#barkerville-policy::before{
+  background: linear-gradient(90deg, var(--acc-rust), color-mix(in oklab, var(--acc-rust) 25%, white 75%));
+}
+
+/* BLUE — Grants (echo the “official doc” vibe) */
+#barkerville-grants{
+  border-color: color-mix(in oklab, var(--acc-blue) 40%, var(--line) 60%);
+}
+#barkerville-grants > h2{
+  border-bottom-color: color-mix(in oklab, var(--acc-blue) 35%, var(--line) 65%);
+}
+#barkerville-grants::before{
+  background: linear-gradient(90deg, var(--acc-blue), color-mix(in oklab, var(--acc-blue) 25%, white 75%));
+}
+
+/* ORCHID — Knight vs Pierce (theatrical) */
+#barkerville-knight-vs-pierce{
+  border-color: color-mix(in oklab, var(--acc-orchid) 40%, var(--line) 60%);
+}
+#barkerville-knight-vs-pierce > h2{
+  border-bottom-color: color-mix(in oklab, var(--acc-orchid) 35%, var(--line) 65%);
+}
+#barkerville-knight-vs-pierce::before{
+  background: linear-gradient(90deg, var(--acc-orchid), color-mix(in oklab, var(--acc-orchid) 25%, white 75%));
+}
+
+/* SAGE — Volunteering */
+#volunteering-memo{
+  border-color: color-mix(in oklab, var(--acc-sage) 40%, var(--line) 60%);
+}
+#volunteering-memo > h2{
+  border-bottom-color: color-mix(in oklab, var(--acc-sage) 35%, var(--line) 65%);
+}
+#volunteering-memo::before{
+  background: linear-gradient(90deg, var(--acc-sage), color-mix(in oklab, var(--acc-sage) 25%, white 75%));
+}
+
+/* GOLD — Personal projects */
+#other-simpsons{
+  border-color: color-mix(in oklab, var(--acc-gold) 40%, var(--line) 60%);
+}
+#other-simpsons > h2{
+  border-bottom-color: color-mix(in oklab, var(--acc-gold) 35%, var(--line) 65%);
+}
+#other-simpsons::before{
+  background: linear-gradient(90deg, var(--acc-gold), color-mix(in oklab, var(--acc-gold) 25%, white 75%));
+}
+
+/* Media hover picks up section color via currentColor (subtle) */
+#seneca-user-guide:hover,
+#seneca-style-guide:hover,
+#seneca-ttcwatch:hover,
+#seneca-jimmys:hover,
+#barkerville-policy:hover,
+#barkerville-grants:hover,
+#barkerville-knight-vs-pierce:hover,
+#volunteering-memo:hover,
+#other-simpsons:hover{
+  color: color-mix(in oklab, var(--ink) 86%, currentColor 14%);
+}
+.portfolio-section[class] .media img:hover{
+  outline: 3px solid currentColor; outline-offset: 2px;
+}
+
+/* ---------- Contact (kept) ---------- */
 .contact-grid{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  margin-top: 20px;
-  background: var(--cream-2);
-  padding: 0;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  box-shadow: var(--shadow);
+  display: flex; flex-wrap: wrap; gap: 24px; margin-top: 20px;
+  background: var(--cream-2); padding: 0; border: 1px solid var(--line);
+  border-radius: 18px; box-shadow: var(--shadow);
 }
 .contact-card{
-  flex: 1 1 320px;
-  background: var(--cream-2);
-  color: var(--ink);
-  border-radius: 18px;
-  border: 1px solid var(--line);
-  padding: 20px;
-  box-shadow: var(--shadow);
+  flex: 1 1 320px; background: var(--cream-2); color: var(--ink);
+  border-radius: 18px; border: 1px solid var(--line); padding: 20px; box-shadow: var(--shadow);
 }
 .contact-card h3{
-  font-family: "Josefin Sans", sans-serif;
-  color: var(--ink);
-  margin: 0 0 10px;
-  font-weight: 700;
-  border-bottom: 1px solid rgba(31,26,20,0.2);
-  padding-bottom: 6px;
+  font-family: "Josefin Sans", sans-serif; color: var(--ink);
+  margin: 0 0 10px; font-weight: 700;
+  border-bottom: 1px solid rgba(31,26,20,0.2); padding-bottom: 6px;
 }
-.contact-card a{
-  color: var(--blue-2);
-  text-decoration: underline;
-}
+.contact-card a{ color: var(--blue-2); }
 .contact-card a:hover{ text-decoration-thickness: 2px; }
 
 /* ---------- Callout ---------- */
 .callout{
-  margin-top: 2rem;
-  padding: .75rem 1.25rem;
-  background: #FFF6EB;   /* slightly lighter than cards */
-  border-left: 6px solid #B96F40; /* warm rust accent */
-  border-radius: 12px;
-  font-size: .95em;
-  color: var(--ink);
+  margin-top: 2rem; padding: .75rem 1.25rem;
+  background: #FFF6EB; border-left: 6px solid #B96F40;
+  border-radius: 12px; font-size: .95em; color: var(--ink);
   box-shadow: 0 2px 6px rgba(0,0,0,.06);
 }
-.callout a{
-  font-weight: 700;
-  color: var(--blue-2);
-  text-decoration: none;
-}
+.callout a{ font-weight: 700; color: var(--blue-2); text-decoration: none; }
 .callout a:hover{ text-decoration: underline; }
 
 /* ---------- Responsive ---------- */
-
-/* Tablet and up */
-@media (min-width: 768px){
-  .meta{ grid-template-columns: 1fr 1fr; }
-  .cv-grid{ grid-template-columns: repeat(2, minmax(260px, 1fr)); }
-}
-
-/* Mobile tweaks */
-@media (max-width: 720px){
-  .cv-grid{ grid-template-columns: 1fr; }
-}
-
 @media (max-width: 600px){
   .content-wrapper{ padding: 14px; }
-  .main-content{
-    flex-direction: column;
-    gap: 22px;
-    align-items: flex-start;
-  }
-  .bio-section,
-  .image-section{
-    max-width: 100%;
-    padding: 16px;
-  }
   .nav-bar{
-    flex-wrap: wrap;
-    gap: 14px;
-    font-size: .96em;
-    padding-left: 8px;
-    padding-right: 8px;
-    width: 100%;
-    margin-bottom: 32px;
+    flex-wrap: wrap; gap: 14px; font-size: .96em;
+    padding-left: 8px; padding-right: 8px; width: 100%; margin-bottom: 32px;
   }
-  .nav-bar li{
-    min-width: 0;
-    padding: 4px 6px;
-    box-sizing: border-box;
-  }
+  .nav-bar li{ min-width: 0; padding: 4px 6px; box-sizing: border-box; }
 }
-
-/* ===========================
-   Accent Pack (adds personality)
-   Drop AFTER your current CSS
-   =========================== */
-
-/* 1) A small palette of vivid accents */
-:root{
-  --acc-blue:   #2268D6; /* indigo/royal */
-  --acc-rust:   #C65A2B; /* warm rust */
-  --acc-gold:   #F1B100; /* golden yellow */
-  --acc-sage:   #3B8F7B; /* teal/sage */
-  --acc-orchid: #9B3BB2; /* purple punch */
-}
-
-/* 2) Header band—subtle gradient bar behind name/email */
-.header-content{
-  position: relative;
-  padding-top: 10px;
-}
-.header-content::before{
-  content:"";
-  position: absolute;
-  inset: -12px -24px auto -24px;
-  height: 64px;
-  border-radius: 18px 18px 8px 8px;
-  background:
-    linear-gradient(110deg,
-      color-mix(in oklab, var(--cream-2) 60%, var(--acc-blue) 40%) 0%,
-      color-mix(in oklab, var(--cream-2) 65%, var(--acc-orchid) 35%) 60%,
-      color-mix(in oklab, var(--cream-2) 70%, var(--acc-gold) 30%) 100%);
-  opacity: .14;
-  pointer-events: none;
-}
-
-/* 3) Nav underline indicator for hover/focus (colorful but tidy) */
-.nav-bar a{
-  position: relative;
-}
-.nav-bar a::after{
-  content:"";
-  position: absolute;
-  left: 0; right: 0; bottom: -12px;
-  height: 3px;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .18s ease;
-  background: linear-gradient(90deg, var
-
-
-
-
-
-
-
-
 
