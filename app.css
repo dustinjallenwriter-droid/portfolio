@@ -551,5 +551,51 @@ body { background: #FFF8EC; color: #1F1A14; }
 /* Safety: kill any old header overlay that might tint pages */
 .header-content::before { content: none !important; }
 
+/* ===== About page layout (balanced text + sidebar) ===== */
+.bio-flex{
+  display: grid;
+  grid-template-columns: 1.6fr 0.9fr;  /* text left, badge right */
+  gap: 24px;
+  align-items: start;
+}
+
+/* Text panel matches your site’s card style */
+.bio-text{
+  background: #FFF3E0;
+  border: 1px solid #E6DCCF;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+/* Sidebar card */
+.bio-sidebar{
+  background: #FFF3E0;
+  border: 1px solid #E6DCCF;
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  display: flex;
+  justify-content: center;
+}
+
+/* Keep the badge tidy */
+.bio-sidebar .LI-profile-badge,
+.bio-sidebar .badge-base{
+  width: 100%;
+  max-width: 320px;
+  align-self: flex-start;
+}
+
+/* Optional: keep sidebar visible while scrolling text */
+@media (min-width: 992px){
+  .bio-sidebar{ position: sticky; top: 16px; }
+}
+
+/* Mobile: stack nicely */
+@media (max-width: 768px){
+  .bio-flex{ grid-template-columns: 1fr; }
+}
+
 
 
