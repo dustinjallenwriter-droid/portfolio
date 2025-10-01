@@ -420,6 +420,54 @@ hr{
   }
 }
 
+/* ===========================
+   Accent Pack (adds personality)
+   Drop AFTER your current CSS
+   =========================== */
+
+/* 1) A small palette of vivid accents */
+:root{
+  --acc-blue:   #2268D6; /* indigo/royal */
+  --acc-rust:   #C65A2B; /* warm rust */
+  --acc-gold:   #F1B100; /* golden yellow */
+  --acc-sage:   #3B8F7B; /* teal/sage */
+  --acc-orchid: #9B3BB2; /* purple punch */
+}
+
+/* 2) Header band—subtle gradient bar behind name/email */
+.header-content{
+  position: relative;
+  padding-top: 10px;
+}
+.header-content::before{
+  content:"";
+  position: absolute;
+  inset: -12px -24px auto -24px;
+  height: 64px;
+  border-radius: 18px 18px 8px 8px;
+  background:
+    linear-gradient(110deg,
+      color-mix(in oklab, var(--cream-2) 60%, var(--acc-blue) 40%) 0%,
+      color-mix(in oklab, var(--cream-2) 65%, var(--acc-orchid) 35%) 60%,
+      color-mix(in oklab, var(--cream-2) 70%, var(--acc-gold) 30%) 100%);
+  opacity: .14;
+  pointer-events: none;
+}
+
+/* 3) Nav underline indicator for hover/focus (colorful but tidy) */
+.nav-bar a{
+  position: relative;
+}
+.nav-bar a::after{
+  content:"";
+  position: absolute;
+  left: 0; right: 0; bottom: -12px;
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .18s ease;
+  background: linear-gradient(90deg, var
+
 
 
 
