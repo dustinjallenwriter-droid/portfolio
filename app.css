@@ -568,6 +568,41 @@ body { background: #FFF8EC; color: #1F1A14; }
   box-shadow: 0 8px 24px rgba(0,0,0,0.06);
 }
 
+/* ===== About page: balanced text + badge ===== */
+.bio-flex{
+  display: grid;
+  grid-template-columns: minmax(0,1.6fr) minmax(260px,0.9fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.bio-text{
+  background: #FFF3E0;
+  border: 1px solid #E6DCCF;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+.bio-sidebar{
+  background: #FFF3E0;
+  border: 1px solid #E6DCCF;
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  display: flex;
+  justify-content: center;
+}
+
+/* Key: reserve space so the container doesn't collapse before LI script paints */
+.bio-sidebar .badge-base,
+.bio-sidebar .LI-profile-badge{
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  min-height: 340px;       /* 👈*
+
+
 /* Sidebar card */
 .bio-sidebar{
   background: #FFF3E0;
@@ -596,6 +631,7 @@ body { background: #FFF8EC; color: #1F1A14; }
 @media (max-width: 768px){
   .bio-flex{ grid-template-columns: 1fr; }
 }
+
 
 
 
