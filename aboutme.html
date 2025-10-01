@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <title>About – Dustin J Allen</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="stylesheet" href="app.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="app.css" />
   <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Quicksand:wght@300..700&display=swap" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,60 +36,63 @@
           <div class="bio-flex">
             <div class="bio-text">
               <p>
-                My background in philosophy, freelancing, and the arts has helped me refine my technical communication skills. 
-                As <a href="portfolio.html">my portfolio</a> shows, my writing career has taken me from scripting gold rush theatre and penning grant proposals for historic sites, 
-                to teaching obscure ancient philosophy, to copywriting for digital marketplaces. <br>
-                <br>The common thread? Clear, engaging communication that resonates with a wide range of audiences.
+                My background in philosophy, freelancing, and the arts has helped me refine my technical communication skills.
+                As <a href="portfolio.html">my portfolio</a> shows, my writing career has taken me from scripting gold rush theatre and penning grant proposals for historic sites,
+                to teaching obscure ancient philosophy, to copywriting for digital marketplaces.
               </p>
+              <p>The common thread? Clear, engaging communication that resonates with a wide range of audiences.</p>
+
               <p>
-                My eye for detail and sense of creativity help me create effective technical documentation, educational content, UX writing, 
+                My eye for detail and sense of creativity help me create effective technical documentation, educational content, UX writing,
                 and content strategies. I also have a strong interest in editing and proofreading.
               </p>
+
               <p>
-                Outside of work, I pursue creative projects of many kinds: touring with <a href=https://open.spotify.com/artist/3p7XKFCN60Is5J9DwylyU>my folk band</a> (not as frequently as when we were young), acting and performing comedy, 
-                analyzing culture on<a href="https://storylinefever.substack.com/"> my blog</a>, and volunteering for a range of <a href="https://www.youtube.com/watch?v=mxbUNjxXWdU">humanitarian and community-based projects</a>. Currently, I'm an Adult Literacy Volunteer at West Neighbourhood House. 
-               </p>
+                Outside of work, I pursue creative projects of many kinds: touring with
+                <a href="https://open.spotify.com/artist/3p7XKFCN60Is5J9DwylyU">my folk band</a> (not as frequently as when we were young),
+                acting and performing comedy, analyzing culture on
+                <a href="https://storylinefever.substack.com/">my blog</a>, and volunteering for a range of
+                <a href="https://www.youtube.com/watch?v=mxbUNjxXWdU">humanitarian and community-based projects</a>.
+                Currently, I'm an Adult Literacy Volunteer at West Neighbourhood House.
+              </p>
+
               <p>
-                Explore my <a href="portfolio.html">portfolio</a> for samples, 
-                view my <a href="cv.html">CV</a>, or <a href="contact.html">get in touch</a>. 
+                Explore my <a href="portfolio.html">portfolio</a> for samples,
+                view my <a href="cv.html">CV</a>, or <a href="contact.html">get in touch</a>.
               </p>
             </div>
-            
+
             <aside class="bio-sidebar">
-              <!-- LinkedIn badge FIRST -->
-              <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="dustin-j-allen-a408104a" data-version="v1">
-                <a class="badge-base__link LI-simple-link" href="https://ca.linkedin.com/in/dustin-j-allen-a408104a?trk=profile-badge"></a>
+              <div class="badge-base LI-profile-badge"
+                   data-locale="en_US" data-size="medium" data-theme="dark"
+                   data-type="VERTICAL" data-vanity="dustin-j-allen-a408104a" data-version="v1">
+                <a class="badge-base__link LI-simple-link"
+                   href="https://ca.linkedin.com/in/dustin-j-allen-a408104a?trk=profile-badge"></a>
               </div>
             </aside>
-
           </div>
         </section>
       </div>
     </div>
   </main>
+
   <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
   <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const here = location.hostname;
-  document.querySelectorAll('a[href]').forEach(a => {
-    const u = new URL(a.href, location.href);
-    const isExternal = u.hostname !== here;
-    const isPDF = u.pathname.toLowerCase().endsWith('.pdf');
-    if ((isExternal || isPDF) && a.target !== "_self") {
-      a.target = "_blank";
-      a.rel = "noopener noreferrer";
-    }
-  });
-});
-</script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const here = location.hostname;
+      document.querySelectorAll('a[href]').forEach(a => {
+        const u = new URL(a.href, location.href);
+        const isExternal = u.hostname !== here;
+        const isPDF = u.pathname.toLowerCase().endsWith('.pdf');
+        if ((isExternal || isPDF) && a.target !== "_self") {
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+        }
+      });
+    });
+  </script>
 </body>
 </html>
-
-
-
-
-
-
 
 
 
