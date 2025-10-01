@@ -375,3 +375,16 @@ hr{
   }
   .nav-bar li{ min-width: 0; padding: 4px 6px; box-sizing: border-box; }
 }
+
+
+/* Contact page: keep links purple, but buttons white */
+.contact-card a:not(.btn) {
+  color: var(--purple-deep);
+}
+
+.contact-card a.btn,
+.btn,
+.btn:visited,
+.btn:active {
+  color: #fff !important;   /* force white label on dark button */
+}
