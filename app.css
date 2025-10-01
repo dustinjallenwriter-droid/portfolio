@@ -527,6 +527,210 @@ h1, h2, h3 {
   color: #241d
 
 
+/* ===============================
+   Beige Theme + Cooper Headings
+   (paste at END of your CSS)
+   =============================== */
+
+/* 0) Color tokens so it’s easy to tweak */
+:root{
+  --beige:      #F7F0E6; /* main “buttery” background */
+  --beige-2:    #FFFAF2; /* surfaces/cards */
+  --beige-3:    #F2E8DA; /* slightly deeper panel */
+  --ink:        #1F1A14; /* warm near-black for text */
+  --muted:      #5F554B; /* secondary text */
+  --line:       #E6DCCF; /* borders & rules */
+
+  --accent:     #1F6D8C; /* calm professional blue */
+  --accent-ink: #0F3643; /* darker hover/ink */
+  --accent-2:   #B36A38; /* warm rust for callouts */
+
+  --shadow:     0 8px 24px rgba(31,26,20,.08), 0 2px 6px rgba(31,26,20,.06);
+}
+
+/* 1) Headings: Cooper Black (with fallbacks)
+   If you have a licensed Cooper Black, uncomment @font-face and update the URL
+*/
+/*
+@font-face{
+  font-family:"Cooper Black";
+  src:url("/fonts/Cooper-Black.woff2") format("woff2");
+  font-display:swap;
+}
+*/
+:root{
+  --display: "Cooper Black", "Gloock", "DM Serif Display", Georgia, "Times New Roman", serif;
+  --text-sans: "Quicksand", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* 2) Global look: beige instead of purple gradient */
+body{
+  background: var(--beige);
+  color: var(--ink);
+  font-family: var(--text-sans);
+}
+
+/* 3) Replace purple container with light surface card */
+.content-wrapper{
+  background: var(--beige-2);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  color: var(--ink);
+}
+
+/* 4) Main content blocks: neutral panels */
+.main-content-body{
+  background: var(--beige-3);
+  color: var(--ink);
+  border-radius: 20px;
+  border: 1px solid var(--line);
+}
+
+/* Bio card */
+.bio-section{
+  background: var(--beige-2);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+/* Images: lose blue backfill, keep shadow */
+.image-section img{
+  background: transparent;
+  box-shadow: var(--shadow);
+}
+
+/* 5) Typography: swap headings to Cooper (+ keep sizes) */
+h1, h2, h3{
+  font-family: var(--display);
+  letter-spacing: -0.2px;
+  color: var(--ink);
+}
+.header-content h2,
+.cv-card h3,
+.contact-card h3,
+.toc-title,
+.portfolio-section h2,
+.meta h3{
+  font-family: var(--display);
+  color: var(--ink);
+}
+
+/* De-purple body copy that was explicitly set */
+p, li, .media figcaption, .portfolio .lede, .portfolio .intro-list, .meta ul{
+  color: var(--muted);
+}
+
+/* 6) Navigation: soft bar, clear links, subtle hover */
+.nav-bar{
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 48px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.nav-bar a,
+.nav-bar a:visited,
+.nav-bar a:active,
+.nav-bar a:focus{
+  color: var(--ink);
+}
+.nav-bar li:hover{
+  background: color-mix(in oklab, var(--beige-2) 92%, var(--accent) 8%);
+}
+
+/* 7) Buttons: accent blue primary, beige secondary */
+.btn,
+.cv-intro .btn,
+.button, button, input[type=submit]{
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid color-mix(in oklab, var(--accent) 85%, black);
+  box-shadow: var(--shadow);
+}
+.btn:hover, .cv-intro .btn:hover{ transform: translateY(-1px); }
+
+.btn.outline, .button.secondary{
+  background: var(--beige-2);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+/* 8) Portfolio cards: light card vs. dark translucent */
+.portfolio-section{
+  background: var(--beige-2);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.portfolio-section > h2{
+  border-bottom: 2px solid var(--line);
+}
+.portfolio-section h3{
+  border-bottom: 1px solid var(--line);
+}
+
+/* 9) PDF / media boxes: echo beige system */
+.pdf-box{
+  border: 1px dashed var(--accent-ink);
+  color: var(--accent-ink);
+  background: var(--beige-3);
+  box-shadow: inset 0 2px 12px rgba(31,26,20,.06);
+}
+.pdf-box:hover{ outline: 2px solid var(--accent-ink); }
+
+/* 10) Callout: keep your pattern but warm it up */
+.callout{
+  background: color-mix(in oklab, var(--beige-2) 85%, white);
+  border-left: 6px solid var(--accent-2);
+  border-radius: 12px;
+  color: var(--ink);
+}
+.callout a{ color: var(--accent-ink); }
+
+/* 11) Links & focus states */
+a{ color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: .08em; }
+a:hover{ color: var(--accent-ink); }
+:focus-visible{
+  outline: 3px solid color-mix(in oklab, var(--accent) 70%, white);
+  outline-offset: 3px; border-radius: 6px;
+}
+
+/* 12) Cards you set to pinks (CV/contact) → beige */
+.cv-card,
+.contact-card,
+.contact-grid{
+  background: var(--beige-2);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.contact-card a{ color: var(--accent-ink); }
+
+/* 13) Horizontal rule to match the system */
+hr{
+  border: none;
+  border-top: 1px solid var(--line);
+}
+
+/* 14) Optional dark mode that stays warm */
+@media (prefers-color-scheme: dark){
+  :root{
+    --beige:   #1B1916;
+    --beige-2: #23201C;
+    --beige-3: #29251F;
+    --ink:     #F5EFE7;
+    --muted:   #D9D1C5;
+    --line:    #3A352E;
+    --accent:  #66A9C2;
+    --accent-ink:#CDE9F2;
+    --accent-2:#CF8B5E;
+  }
+  .portfolio-section,
+  .content-wrapper,
+  .cv-card,
+  .contact-card{ box-shadow: none; }
+}
+
 
 
 
