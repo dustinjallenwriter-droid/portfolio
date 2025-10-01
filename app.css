@@ -684,5 +684,113 @@ body { background: #FFF8EC; color: #1F1A14; }
   border-radius: 20px;
 }
 
+   /* ===============================
+   PURPLE ACCENTS (site-wide opt-in)
+   =============================== */
+/* Colors to match your downloadable portfolio */
+:root{
+  --purple-deep:   #3B1C55;  /* headings, links */
+  --lavender-mid:  #CBB7EE;  /* rules, rings */
+  --lavender-soft: #E7DFF7;  /* subtle hovers, fills */
+  --periwinkle:    #90B6E8;  /* photo frame accent */
+}
+
+/* Turn on by adding class="theme-purple" to <body> (see HTML tweak below) */
+body.theme-purple .content-wrapper{
+  border-radius: 26px;
+  /* visible multi-ring frame like your PDF */
+  box-shadow:
+    0 10px 28px rgba(0,0,0,.10),
+    0 0 0 6px #FFFFFF,
+    0 0 0 16px var(--lavender-mid),
+    0 0 0 26px var(--purple-deep);
+}
+
+/* Header + nav obvious purple */
+body.theme-purple .header-content h1{ color: var(--purple-deep); }
+body.theme-purple .header-content h2{ color: #0f2433; opacity: .9; }
+
+body.theme-purple .nav-bar{
+  border-top: 2px solid var(--lavender-mid);
+  border-bottom: 2px solid var(--lavender-mid);
+}
+body.theme-purple .nav-bar a{ color: var(--purple-deep); }
+body.theme-purple .nav-bar li:hover{ background: var(--lavender-soft); }
+
+/* Links, rules, buttons */
+body.theme-purple a{ color: var(--purple-deep); }
+body.theme-purple hr{ border-top: 2px solid var(--lavender-mid); }
+
+body.theme-purple .btn{
+  background: var(--purple-deep);
+  color: #fff;
+  border: 1px solid rgba(0,0,0,.15);
+}
+body.theme-purple .btn:hover{ transform: translateY(-1px); }
+
+/* Photo frame like the PDF */
+body.theme-purple .image-section img{
+  border: 10px solid var(--periwinkle);
+  background: #D9E7FA;
+  border-radius: 18px;
+}
+
+/* Keep portfolio section ribbons as you set them; this only colors headings if needed */
+body.theme-purple .portfolio-section > h2{ color: var(--purple-deep); }
+
+/* ===================================
+   ABOUT PAGE LAYOUT (mobile safe fix)
+   =================================== */
+/* Default: stack on mobile (prevents “disaster”) */
+.bio-flex{
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Cards for both columns so it matches the rest of the site */
+.bio-text,
+.bio-sidebar{
+  background: #FFF3E0;
+  border: 1px solid #E6DCCF;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+}
+
+/* Comfortable padding */
+.bio-text{ padding: 22px; }
+.bio-sidebar{
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Prevent LinkedIn container from collapsing before script paints */
+.bio-sidebar .badge-base,
+.bio-sidebar .LI-profile-badge{
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  min-height: 340px;
+}
+
+/* Tablet/desktop: two columns, badge on the right */
+@media (min-width: 900px){
+  .bio-flex{
+    display: grid;
+    grid-template-columns: 1.6fr 0.9fr;
+    gap: 24px;
+    align-items: start;
+  }
+  .bio-sidebar{ position: sticky; top: 16px; } /* optional: nice UX */
+}
+
+/* Small phones: reduce the badge's reserved height so it doesn’t push content */
+@media (max-width: 380px){
+  .bio-sidebar .badge-base,
+  .bio-sidebar .LI-profile-badge{ min-height: 300px; }
+}
+
+
 
 
