@@ -1,30 +1,33 @@
 /* =========================================
-   Dustin J Allen – Cream + Color Accents
-   - Warm base with bold section accents
-   - Auto-maps colors to your existing IDs
+   Dustin J Allen — Cream base + Purple accents
+   - Visible purple like your PDF
+   - Mobile-safe About layout
+   - Index side-by-side, CV cards grid
    ========================================= */
 
 /* ---------- Tokens ---------- */
 :root{
-  /* base */
+  /* Base creams */
   --cream:   #FFF8EC;   /* page */
   --cream-2: #FFF3E0;   /* cards */
   --cream-3: #F6E9D4;   /* panels */
   --ink:     #1F1A14;   /* warm near-black */
   --muted:   #5E564E;   /* secondary text */
   --line:    #E6DCCF;   /* borders */
-  --shadow:  0 8px 24px rgba(31,26,20,.08), 0 2px 6px rgba(31,26,20,.06);
 
-  /* vivid accent family (aligned to your portfolio) */
-  --acc-blue:   #2268D6;  /* royal/indigo */
-  --acc-rust:   #C65A2B;  /* warm rust */
-  --acc-gold:   #F1B100;  /* golden yellow */
-  --acc-sage:   #3B8F7B;  /* teal/sage */
-  --acc-orchid: #9B3BB2;  /* purple punch */
+  /* Accent family (from your PDF) */
+  --purple-deep:   #3B1C55; /* headings/links/rings */
+  --lavender-mid:  #CBB7EE; /* rules/rings */
+  --lavender-soft: #E7DFF7; /* hovers/fills */
+  --periwinkle:    #90B6E8; /* photo frame */
 
-  /* default button/link accents */
-  --blue:   var(--acc-blue);
-  --blue-2: #0F3643;
+  /* Additional section colors */
+  --acc-blue:   #2268D6;
+  --acc-rust:   #C65A2B;
+  --acc-gold:   #F1B100;
+  --acc-sage:   #3B8F7B;
+
+  --shadow: 0 8px 24px rgba(0,0,0,.06);
 }
 
 /* ---------- Base ---------- */
@@ -49,22 +52,22 @@ h1, h2, h3{
 }
 
 a{
-  color: var(--blue);
+  color: var(--purple-deep);
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: .08em;
 }
-a:hover{ color: var(--blue-2); }
+a:hover{ opacity: .9; }
 
 :focus-visible{
-  outline: 3px solid color-mix(in oklab, var(--blue) 70%, white);
+  outline: 3px solid var(--lavender-mid);
   outline-offset: 3px;
   border-radius: 6px;
 }
 
 hr{
   border: none;
-  border-top: 1px solid var(--line);
+  border-top: 2px solid var(--lavender-mid);
   margin: 24px 0;
 }
 
@@ -74,37 +77,20 @@ hr{
   margin: 40px auto 0 auto;
   background: var(--cream-2);
   border: 1px solid var(--line);
-  border-radius: 20px;
+  border-radius: 24px;
   padding: 36px;
-  box-shadow: var(--shadow);
+  /* visible multi-ring frame like your PDF */
+  box-shadow:
+    0 10px 28px rgba(0,0,0,.10),
+    0 0 0 6px #FFFFFF,
+    0 0 0 16px var(--lavender-mid),
+    0 0 0 26px var(--purple-deep);
   color: var(--ink);
 }
 
-/* header band (soft colorful wash like your PDF sections) */
-.header-content{
-  position: relative;
-  padding-top: 10px;
-}
-.header-content::before{
-  content:"";
-  position: absolute; inset: -12px -24px auto -24px;
-  height: 64px;
-  border-radius: 18px 18px 8px 8px;
-  background:
-    linear-gradient(110deg,
-      color-mix(in oklab, var(--cream-2) 60%, var(--acc-blue) 40%) 0%,
-      color-mix(in oklab, var(--cream-2) 65%, var(--acc-orchid) 35%) 60%,
-      color-mix(in oklab, var(--cream-2) 70%, var(--acc-gold) 30%) 100%);
-  opacity: .14;
-  pointer-events: none;
-}
-.header-content h1{ margin-bottom: .25rem; }
-.header-content h2{
-  font-size: 1.15em;
-  font-weight: 700;
-  color: var(--blue-2);
-  margin: 0;
-}
+/* Header (no weird overlay; clear purple title) */
+.header-content h1{ color: var(--purple-deep); margin-bottom: .25rem; }
+.header-content h2{ font-size: 1.15em; font-weight: 700; color: #0f2433; margin: 0; }
 
 /* ---------- Nav ---------- */
 .nav-bar{
@@ -113,9 +99,9 @@ hr{
   gap: 60px;
   list-style: none;
   padding: 12px 0;
-  margin: 15px 0 64px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  margin: 15px 0 48px 0;
+  border-top: 2px solid var(--lavender-mid);
+  border-bottom: 2px solid var(--lavender-mid);
 }
 .nav-bar li{
   cursor: pointer;
@@ -128,22 +114,11 @@ hr{
 .nav-bar a:visited,
 .nav-bar a:active,
 .nav-bar a:focus{
-  color: var(--ink);
+  color: var(--purple-deep);
   text-decoration: none;
   transition: color .15s ease;
 }
-/* colorful hover underline */
-.nav-bar a{ position: relative; }
-.nav-bar a::after{
-  content:"";
-  position: absolute; left: 0; right: 0; bottom: -12px;
-  height: 3px; transform: scaleX(0); transform-origin: left;
-  transition: transform .18s ease;
-  background: linear-gradient(90deg, var(--acc-blue), var(--acc-gold));
-  border-radius: 3px;
-}
-.nav-bar a:hover::after,
-.nav-bar a:focus-visible::after{ transform: scaleX(1); }
+.nav-bar li:hover{ background: var(--lavender-soft); }
 
 /* ---------- Panels ---------- */
 .main-content-body{
@@ -157,9 +132,10 @@ hr{
 .bio-section{
   background: var(--cream-2);
   color: var(--ink);
-  padding: 28px;
+  padding: 24px;
   border-radius: 20px;
   border: 1px solid var(--line);
+  box-shadow: var(--shadow);
 }
 
 /* ---------- Buttons ---------- */
@@ -169,7 +145,7 @@ hr{
   border-radius: 10px;
   text-decoration: none;
   color: #fff;
-  background: var(--acc-blue);
+  background: var(--purple-deep);
   border: 1px solid rgba(0,0,0,.08);
   box-shadow: var(--shadow);
   transition: transform .12s ease;
@@ -182,32 +158,82 @@ hr{
 }
 .btn.xs{ padding: 6px 10px; font-size: .9rem; margin-left: 8px; }
 
-/* quick button color helpers (optional) */
-.btn.blue   { background: var(--acc-blue); }
-.btn.rust   { background: var(--acc-rust); }
-.btn.gold   { background: var(--acc-gold); color:#1F1A14; }
-.btn.sage   { background: var(--acc-sage); }
-.btn.orchid { background: var(--acc-orchid); }
+/* ---------- Index layout ---------- */
+.main-content{
+  display: flex;
+  flex-direction: column; /* mobile default */
+  gap: 24px;
+  align-items: stretch;
+}
+.image-section{
+  display: flex; justify-content: center; align-items: center;
+}
+.image-section img{
+  width: 100%; max-width: 320px; height: auto;
+  border-radius: 14px; box-shadow: var(--shadow);
+  border: 10px solid var(--periwinkle);
+  background: #D9E7FA;
+}
+@media (min-width: 768px){
+  .main-content{ flex-direction: row; align-items: flex-start; }
+  .bio-section{ flex: 2 1 460px; }
+  .image-section{ flex: 1 1 260px; min-width: 240px; }
+}
+
+/* ---------- About page layout ---------- */
+/* Mobile-first stack to avoid collapse */
+.bio-flex{
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.bio-text,
+.bio-sidebar{
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+.bio-text{ padding: 22px; }
+.bio-sidebar{
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+/* Prevent LinkedIn container from collapsing before script paints */
+.bio-sidebar .badge-base,
+.bio-sidebar .LI-profile-badge{
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  min-height: 340px; /* key for visibility */
+}
+@media (min-width: 900px){
+  .bio-flex{
+    display: grid;
+    grid-template-columns: 1.6fr 0.9fr;
+    gap: 24px;
+    align-items: start;
+  }
+  .bio-sidebar{ position: sticky; top: 16px; }
+}
 
 /* ---------- Portfolio ---------- */
 .portfolio{ display: flex; flex-direction: column; gap: 32px; }
-
-.portfolio-intro h2{ margin: 0 0 8px; }
+.portfolio-intro h2{ margin: 0 0 8px; color: var(--purple-deep); }
 .portfolio .lede{ margin: 0 0 8px; color: var(--muted); }
 .portfolio .intro-list{ margin: 6px 0 16px; padding-left: 1.2rem; color: var(--muted); }
 
 .toc{ margin: 18px 0; }
-.toc-title{
-  font-size: 1.05rem; font-weight: 700; margin: 0 0 6px;
-}
+.toc-title{ font-size: 1.05rem; font-weight: 700; margin: 0 0 6px; color: var(--purple-deep); }
 .toc ul{ padding-left: 1.2rem; margin: 0; line-height: 2.2; }
-.toc a{ color: var(--ink); }
+.toc a{ color: var(--purple-deep); }
 
 .portfolio-section{
   position: relative;
   overflow: clip;
-  background: var(--cream-2);
-  border: 1px solid var(--line);
+  background: #FFFFFF;
+  border: 2px solid var(--line);
   border-radius: 16px;
   box-shadow: var(--shadow);
   padding: 24px;
@@ -216,14 +242,51 @@ hr{
   padding-bottom: 6px;
   margin-bottom: 16px;
   border-bottom: 2px solid var(--line);
-}
-.portfolio-section h3{
-  padding-bottom: 4px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid var(--line);
   color: var(--ink);
 }
-.portfolio-section p{ margin: 6px 0; color: var(--muted); }
+/* top ribbon bar */
+.portfolio-section::before{
+  content:"";
+  position:absolute; left:0; top:0; height:10px; width:100%;
+  border-radius: 16px 16px 0 0;
+}
+
+/* Section accents by ID (solid, no color-mix for max compatibility) */
+#seneca-user-guide{ border-color: var(--acc-blue); }
+#seneca-user-guide > h2{ color: var(--acc-blue); border-bottom-color: var(--acc-blue); }
+#seneca-user-guide::before{ background: var(--acc-blue); }
+
+#seneca-style-guide{ border-color: var(--purple-deep); }
+#seneca-style-guide > h2{ color: var(--purple-deep); border-bottom-color: var(--purple-deep); }
+#seneca-style-guide::before{ background: var(--purple-deep); }
+
+#seneca-ttcwatch{ border-color: var(--acc-gold); }
+#seneca-ttcwatch > h2{ color: var(--acc-gold); border-bottom-color: var(--acc-gold); }
+#seneca-ttcwatch::before{ background: var(--acc-gold); }
+
+#seneca-jimmys{ border-color: var(--acc-sage); }
+#seneca-jimmys > h2{ color: var(--acc-sage); border-bottom-color: var(--acc-sage); }
+#seneca-jimmys::before{ background: var(--acc-sage); }
+
+#barkerville-policy{ border-color: var(--acc-rust); }
+#barkerville-policy > h2{ color: var(--acc-rust); border-bottom-color: var(--acc-rust); }
+#barkerville-policy::before{ background: var(--acc-rust); }
+
+#barkerville-grants{ border-color: var(--acc-blue); }
+#barkerville-grants > h2{ color: var(--acc-blue); border-bottom-color: var(--acc-blue); }
+#barkerville-grants::before{ background: var(--acc-blue); }
+
+#barkerville-knight-vs-pierce{ border-color: var(--purple-deep); }
+#barkerville-knight-vs-pierce > h2{ color: var(--purple-deep); border-bottom-color: var(--purple-deep); }
+#barkerville-knight-vs-pierce::before{ background: var(--purple-deep); }
+
+#volunteering-memo{ border-color: var(--acc-sage); }
+#volunteering-memo > h2{ color: var(--acc-sage); border-bottom-color: var(--acc-sage); }
+#volunteering-memo::before{ background: var(--acc-sage); }
+
+#other-simpsons{ border-color: var(--acc-gold); }
+#other-simpsons > h2{ color: var(--acc-gold); border-bottom-color: var(--acc-gold); }
+#other-simpsons::before{ background: var(--acc-gold); }
 
 /* media */
 .media{ margin: 12px 0; }
@@ -242,139 +305,40 @@ hr{
 /* pdf box */
 .pdf-box{
   display: grid; place-items: center; width: 100%; aspect-ratio: 16/9;
-  border: 1px dashed var(--blue-2);
-  border-radius: 14px; color: var(--blue-2); font-weight: 700;
+  border: 2px dashed var(--purple-deep);
+  border-radius: 14px; color: var(--purple-deep); font-weight: 700;
   background: var(--cream-3);
-  box-shadow: inset 0 2px 12px rgba(31,26,20,.06);
+  box-shadow: inset 0 2px 12px rgba(0,0,0,.06);
 }
-.pdf-box:hover{ outline: 2px solid var(--blue-2); }
+.pdf-box:hover{ outline: 2px solid var(--purple-deep); }
 
-/* ---------- Section Accent System (AUTO by ID) ----------
-   Adds a bold color ribbon + tinted borders like your PDF.
-   You don't need to edit HTML; IDs are already present.
-   ------------------------------------------------------- */
+/* ---------- CV grid & cards ---------- */
+.cv-grid{
+  display: grid;
+  grid-template-columns: 1fr;  /* mobile */
+  gap: 18px;
+  padding: 18px 22px 8px;
+}
+@media (min-width: 768px){
+  .cv-grid{ grid-template-columns: repeat(2, minmax(260px, 1fr)); }
+}
+.cv-card{
+  background: var(--cream-2);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+.cv-card h3{
+  margin: 0 0 10px; font-weight: 700;
+  border-bottom: 1px solid rgba(31,26,20,0.15);
+  padding-bottom: 6px;
+}
+.cv-card ul.tight{ margin: 0; padding-left: 18px; }
+.cv-card ul.tight li{ margin: 6px 0; }
 
-/* helper mixins via multi rules */
-.portfolio-section::before{
-  content:""; position:absolute; inset:0 auto auto 0; height:8px; width:100%;
-}
-
-/* BLUE — Hypernomicon user guide */
-#seneca-user-guide{
-  border-color: color-mix(in oklab, var(--acc-blue) 40%, var(--line) 60%);
-}
-#seneca-user-guide > h2{
-  border-bottom-color: color-mix(in oklab, var(--acc-blue) 35%, var(--line) 65%);
-}
-#seneca-user-guide::before{
-  background: linear-gradient(90deg, var(--acc-blue), color-mix(in oklab, var(--acc-blue) 25%, white 75%));
-}
-
-/* ORCHID — DICE style guide */
-#seneca-style-guide{
-  border-color: color-mix(in oklab, var(--acc-orchid) 40%, var(--line) 60%);
-}
-#seneca-style-guide > h2{
-  border-bottom-color: color-mix(in oklab, var(--acc-orchid) 35%, var(--line) 65%);
-}
-#seneca-style-guide::before{
-  background: linear-gradient(90deg, var(--acc-orchid), color-mix(in oklab, var(--acc-orchid) 25%, white 75%));
-}
-
-/* GOLD — TTCWatch */
-#seneca-ttcwatch{
-  border-color: color-mix(in oklab, var(--acc-gold) 40%, var(--line) 60%);
-}
-#seneca-ttcwatch > h2{
-  border-bottom-color: color-mix(in oklab, var(--acc-gold) 35%, var(--line) 65%);
-}
-#seneca-ttcwatch::before{
-  background: linear-gradient(90deg, var(--acc-gold), color-mix(in oklab, var(--acc-gold) 25%, white 75%));
-}
-
-/* SAGE — Jimmy’s site */
-#seneca-jimmys{
-  border-color: color-mix(in oklab, var(--acc-sage) 40%, var(--line) 60%);
-}
-#seneca-jimmys > h2{
-  border-bottom-color: color-mix(in oklab, var(--acc-sage) 35%, var(--line) 65%);
-}
-#seneca-jimmys::before{
-  background: linear-gradient(90deg, var(--acc-sage), color-mix(in oklab, var(--acc-sage) 25%, white 75%));
-}
-
-/* RUST — Vehicle policy */
-#barkerville-policy{
-  border-color: color-mix(in oklab, var(--acc-rust) 40%, var(--line) 60%);
-}
-#barkerville-policy > h2{
-  border-bottom-color: color-mix(in oklab, var(--acc-rust) 35%, var(--line) 65%);
-}
-#barkerville-policy::before{
-  background: linear-gradient(90deg, var(--acc-rust), color-mix(in oklab, var(--acc-rust) 25%, white 75%));
-}
-
-/* BLUE — Grants (echo the “official doc” vibe) */
-#barkerville-grants{
-  border-color: color-mix(in oklab, var(--acc-blue) 40%, var(--line) 60%);
-}
-#barkerville-grants > h2{
-  border-bottom-color: color-mix(in oklab, var(--acc-blue) 35%, var(--line) 65%);
-}
-#barkerville-grants::before{
-  background: linear-gradient(90deg, var(--acc-blue), color-mix(in oklab, var(--acc-blue) 25%, white 75%));
-}
-
-/* ORCHID — Knight vs Pierce (theatrical) */
-#barkerville-knight-vs-pierce{
-  border-color: color-mix(in oklab, var(--acc-orchid) 40%, var(--line) 60%);
-}
-#barkerville-knight-vs-pierce > h2{
-  border-bottom-color: color-mix(in oklab, var(--acc-orchid) 35%, var(--line) 65%);
-}
-#barkerville-knight-vs-pierce::before{
-  background: linear-gradient(90deg, var(--acc-orchid), color-mix(in oklab, var(--acc-orchid) 25%, white 75%));
-}
-
-/* SAGE — Volunteering */
-#volunteering-memo{
-  border-color: color-mix(in oklab, var(--acc-sage) 40%, var(--line) 60%);
-}
-#volunteering-memo > h2{
-  border-bottom-color: color-mix(in oklab, var(--acc-sage) 35%, var(--line) 65%);
-}
-#volunteering-memo::before{
-  background: linear-gradient(90deg, var(--acc-sage), color-mix(in oklab, var(--acc-sage) 25%, white 75%));
-}
-
-/* GOLD — Personal projects */
-#other-simpsons{
-  border-color: color-mix(in oklab, var(--acc-gold) 40%, var(--line) 60%);
-}
-#other-simpsons > h2{
-  border-bottom-color: color-mix(in oklab, var(--acc-gold) 35%, var(--line) 65%);
-}
-#other-simpsons::before{
-  background: linear-gradient(90deg, var(--acc-gold), color-mix(in oklab, var(--acc-gold) 25%, white 75%));
-}
-
-/* Media hover picks up section color via currentColor (subtle) */
-#seneca-user-guide:hover,
-#seneca-style-guide:hover,
-#seneca-ttcwatch:hover,
-#seneca-jimmys:hover,
-#barkerville-policy:hover,
-#barkerville-grants:hover,
-#barkerville-knight-vs-pierce:hover,
-#volunteering-memo:hover,
-#other-simpsons:hover{
-  color: color-mix(in oklab, var(--ink) 86%, currentColor 14%);
-}
-.portfolio-section[class] .media img:hover{
-  outline: 3px solid currentColor; outline-offset: 2px;
-}
-
-/* ---------- Contact (kept) ---------- */
+/* ---------- Contact ---------- */
 .contact-grid{
   display: flex; flex-wrap: wrap; gap: 24px; margin-top: 20px;
   background: var(--cream-2); padding: 0; border: 1px solid var(--line);
@@ -387,9 +351,9 @@ hr{
 .contact-card h3{
   font-family: "Josefin Sans", sans-serif; color: var(--ink);
   margin: 0 0 10px; font-weight: 700;
-  border-bottom: 1px solid rgba(31,26,20,0.2); padding-bottom: 6px;
+  border-bottom: 1px solid rgba(31,26,20,0.15); padding-bottom: 6px;
 }
-.contact-card a{ color: var(--blue-2); }
+.contact-card a{ color: var(--purple-deep); }
 .contact-card a:hover{ text-decoration-thickness: 2px; }
 
 /* ---------- Callout ---------- */
@@ -399,10 +363,10 @@ hr{
   border-radius: 12px; font-size: .95em; color: var(--ink);
   box-shadow: 0 2px 6px rgba(0,0,0,.06);
 }
-.callout a{ font-weight: 700; color: var(--blue-2); text-decoration: none; }
+.callout a{ font-weight: 700; color: var(--purple-deep); text-decoration: none; }
 .callout a:hover{ text-decoration: underline; }
 
-/* ---------- Responsive ---------- */
+/* ---------- Responsive nav tweaks ---------- */
 @media (max-width: 600px){
   .content-wrapper{ padding: 14px; }
   .nav-bar{
@@ -411,386 +375,3 @@ hr{
   }
   .nav-bar li{ min-width: 0; padding: 4px 6px; box-sizing: border-box; }
 }
-
-/* ===== Simple color accents (drop-in) ===== */
-
-/* Neutral base (keeps your cream vibe) */
-body { background: #FFF8EC; color: #1F1A14; }
-.content-wrapper { background: #FFF3E0; border: 1px solid #E6DCCF; }
-.main-content-body { background: #F6E9D4; border: 1px solid #E6DCCF; border-radius: 16px; }
-.portfolio-section {
-  position: relative;
-  background: #FFFFFF;
-  border: 2px solid #E6DCCF;
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-}
-.portfolio-section > h2 {
-  margin-top: 12px; /* leave space for ribbon */
-  padding-bottom: 6px;
-  border-bottom: 2px solid #E6DCCF;
-  color: #1F1A14;
-}
-
-/* Small solid ribbon bar at the top of each section */
-.ribbon {
-  height: 10px;
-  border-radius: 16px 16px 0 0;
-  margin: -24px -24px 12px -24px; /* stretches to card edges */
-}
-
-/* --- Accent colors (use on both .ribbon and .portfolio-section) --- */
-.blue   { --accent: #2268D6; }
-.rust   { --accent: #C65A2B; }
-.gold   { --accent: #F1B100; }
-.sage   { --accent: #3B8F7B; }
-.orchid { --accent: #9B3BB2; }
-
-/* Apply accent to border, heading rule, and ribbon */
-.portfolio-section.blue,
-.portfolio-section.rust,
-.portfolio-section.gold,
-.portfolio-section.sage,
-.portfolio-section.orchid {
-  border-color: var(--accent);
-}
-
-.portfolio-section.blue  > h2,
-.portfolio-section.rust  > h2,
-.portfolio-section.gold  > h2,
-.portfolio-section.sage  > h2,
-.portfolio-section.orchid> h2 {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
-}
-
-.ribbon.blue   { background: #2268D6; }
-.ribbon.rust   { background: #C65A2B; }
-.ribbon.gold   { background: #F1B100; }
-.ribbon.sage   { background: #3B8F7B; }
-.ribbon.orchid { background: #9B3BB2; }
-
-/* Buttons: one default + easy color variants */
-.btn { background: #2268D6; color: #fff; border: 1px solid rgba(0,0,0,0.1); }
-.btn.rust   { background: #C65A2B; }
-.btn.gold   { background: #F1B100; color:#1F1A14; }
-.btn.sage   { background: #3B8F7B; }
-.btn.orchid { background: #9B3BB2; }
-
-/* Remove the old header shading if present */
-.header-content::before { content: none !important; }
-
-
-
-/* ===== Restore index layout + CV panels ===== */
-
-/* Index: side-by-side on tablet/desktop, stacked on mobile */
-.main-content {
-  display: flex;
-  flex-direction: column;     /* mobile default */
-  gap: 24px;
-  align-items: stretch;
-}
-
-/* Bio card look (keeps cream theme) */
-.bio-section {
-  background: #FFF3E0;
-  border: 1px solid #E6DCCF;
-  border-radius: 20px;
-  padding: 24px;
-}
-
-/* Headshot sizing */
-.image-section { display: flex; justify-content: center; align-items: center; }
-.image-section img {
-  width: 100%;
-  max-width: 320px;           /* keeps photo from growing huge */
-  height: auto;
-  border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-}
-
-/* Tablet+ puts photo to the RIGHT of the blurb */
-@media (min-width: 768px) {
-  .main-content {
-    flex-direction: row;      /* side-by-side */
-    align-items: flex-start;
-  }
-  .bio-section { flex: 2 1 460px; }
-  .image-section { flex: 1 1 260px; min-width: 240px; }
-}
-
-/* CV grid & cards */
-.cv-grid {
-  display: grid;
-  grid-template-columns: 1fr;     /* mobile: 1 col */
-  gap: 18px;
-  padding: 18px 22px 8px;
-}
-@media (min-width: 768px) {
-  .cv-grid { grid-template-columns: repeat(2, minmax(260px, 1fr)); } /* desktop: 2 cols */
-}
-.cv-card {
-  background: #FFF3E0;
-  color: #1F1A14;
-  border: 1px solid #E6DCCF;
-  border-radius: 18px;
-  padding: 18px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-}
-.cv-card h3 {
-  margin: 0 0 10px;
-  font-weight: 700;
-  border-bottom: 1px solid rgba(31,26,20,0.15);
-  padding-bottom: 6px;
-}
-.cv-card ul.tight { margin: 0; padding-left: 18px; }
-.cv-card ul.tight li { margin: 6px 0; }
-
-/* Safety: kill any old header overlay that might tint pages */
-.header-content::before { content: none !important; }
-
-/* ===== About page layout (balanced text + sidebar) ===== */
-.bio-flex{
-  display: grid;
-  grid-template-columns: 1.6fr 0.9fr;  /* text left, badge right */
-  gap: 24px;
-  align-items: start;
-}
-
-/* Text panel matches your site’s card style */
-.bio-text{
-  background: #FFF3E0;
-  border: 1px solid #E6DCCF;
-  border-radius: 18px;
-  padding: 22px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-}
-
-/* ===== About page: balanced text + badge ===== */
-.bio-flex{
-  display: grid;
-  grid-template-columns: minmax(0,1.6fr) minmax(260px,0.9fr);
-  gap: 24px;
-  align-items: start;
-}
-
-.bio-text{
-  background: #FFF3E0;
-  border: 1px solid #E6DCCF;
-  border-radius: 18px;
-  padding: 22px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-}
-
-.bio-sidebar{
-  background: #FFF3E0;
-  border: 1px solid #E6DCCF;
-  border-radius: 18px;
-  padding: 16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-  display: flex;
-  justify-content: center;
-}
-
-/* Key: reserve space so the container doesn't collapse before LI script paints */
-.bio-sidebar .badge-base,
-.bio-sidebar .LI-profile-badge{
-  display: block;
-  width: 100%;
-  max-width: 320px;
-  min-height: 340px;       /* 👈*
-
-
-/* Sidebar card */
-.bio-sidebar{
-  background: #FFF3E0;
-  border: 1px solid #E6DCCF;
-  border-radius: 18px;
-  padding: 16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-  display: flex;
-  justify-content: center;
-}
-
-/* Keep the badge tidy */
-.bio-sidebar .LI-profile-badge,
-.bio-sidebar .badge-base{
-  width: 100%;
-  max-width: 320px;
-  align-self: flex-start;
-}
-
-/* Optional: keep sidebar visible while scrolling text */
-@media (min-width: 992px){
-  .bio-sidebar{ position: sticky; top: 16px; }
-}
-
-/* Mobile: stack nicely */
-@media (max-width: 768px){
-  .bio-flex{ grid-template-columns: 1fr; }
-}
-
-
-/* ===== Subtle lavender theme (opt-in per page) ===== */
-:root{
-  --lavender-soft: #E7DFF7;  /* soft lavender */
-  --lavender-mid:  #CBB7EE;  /* mid lavender (rules/borders) */
-  --purple-deep:   #3B1C55;  /* headings/links */
-  --periwinkle:    #90B6E8;  /* headshot frame like PDF */
-}
-
-/* 1) Multi-ring frame on the main card (like your PDF) */
-.content-wrapper.frame-lavender{
-  border-radius: 24px;
-  /* keep your existing background; the rings are box-shadows */
-  box-shadow:
-    0 8px 28px rgba(0,0,0,0.10), /* drop shadow */
-    0 0 0 6px #FFFFFF,            /* thin white ring */
-    0 0 0 14px var(--lavender-mid), /* lavender ring */
-    0 0 0 20px var(--purple-deep);  /* deep purple ring */
-}
-
-/* 2) Header + nav accents */
-.frame-lavender .header-content h1{ color: var(--purple-deep); }
-.frame-lavender .header-content h2{ color: #223; opacity: .85; }
-
-.frame-lavender .nav-bar{
-  border-top: 2px solid var(--lavender-mid);
-  border-bottom: 2px solid var(--lavender-mid);
-}
-.frame-lavender .nav-bar a{ color: var(--purple-deep); }
-.frame-lavender .nav-bar li:hover{ background: var(--lavender-soft); }
-
-/* 3) Headings, links, and rules inside the page */
-.frame-lavender h2, 
-.frame-lavender h3{ color: var(--purple-deep); }
-.frame-lavender a{ color: var(--purple-deep); }
-.frame-lavender hr{ border-top: 2px solid var(--lavender-mid); }
-
-/* 4) Headshot frame like the PDF */
-.frame-lavender .image-section img{
-  background: #D8E6FA;
-  border: 10px solid var(--periwinkle);
-  border-radius: 18px;
-}
-
-/soften the main section background a hair */
-.frame-lavender .main-content,
-.frame-lavender .main-content-body{
-  background: #FFF6E9; /* still buttery, slightly lighter */
-  border: 1px solid #E6DCCF;
-  border-radius: 20px;
-}
-
-   /* ===============================
-   PURPLE ACCENTS (site-wide opt-in)
-   =============================== */
-/* Colors to match your downloadable portfolio */
-:root{
-  --purple-deep:   #3B1C55;  /* headings, links */
-  --lavender-mid:  #CBB7EE;  /* rules, rings */
-  --lavender-soft: #E7DFF7;  /* subtle hovers, fills */
-  --periwinkle:    #90B6E8;  /* photo frame accent */
-}
-
-/* Turn on by adding class="theme-purple" to <body> (see HTML tweak below) */
-body.theme-purple .content-wrapper{
-  border-radius: 26px;
-  /* visible multi-ring frame like your PDF */
-  box-shadow:
-    0 10px 28px rgba(0,0,0,.10),
-    0 0 0 6px #FFFFFF,
-    0 0 0 16px var(--lavender-mid),
-    0 0 0 26px var(--purple-deep);
-}
-
-/* Header + nav obvious purple */
-body.theme-purple .header-content h1{ color: var(--purple-deep); }
-body.theme-purple .header-content h2{ color: #0f2433; opacity: .9; }
-
-body.theme-purple .nav-bar{
-  border-top: 2px solid var(--lavender-mid);
-  border-bottom: 2px solid var(--lavender-mid);
-}
-body.theme-purple .nav-bar a{ color: var(--purple-deep); }
-body.theme-purple .nav-bar li:hover{ background: var(--lavender-soft); }
-
-/* Links, rules, buttons */
-body.theme-purple a{ color: var(--purple-deep); }
-body.theme-purple hr{ border-top: 2px solid var(--lavender-mid); }
-
-body.theme-purple .btn{
-  background: var(--purple-deep);
-  color: #fff;
-  border: 1px solid rgba(0,0,0,.15);
-}
-body.theme-purple .btn:hover{ transform: translateY(-1px); }
-
-/* Photo frame like the PDF */
-body.theme-purple .image-section img{
-  border: 10px solid var(--periwinkle);
-  background: #D9E7FA;
-  border-radius: 18px;
-}
-
-/* Keep portfolio section ribbons as you set them; this only colors headings if needed */
-body.theme-purple .portfolio-section > h2{ color: var(--purple-deep); }
-
-/* ===================================
-   ABOUT PAGE LAYOUT (mobile safe fix)
-   =================================== */
-/* Default: stack on mobile (prevents “disaster”) */
-.bio-flex{
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-/* Cards for both columns so it matches the rest of the site */
-.bio-text,
-.bio-sidebar{
-  background: #FFF3E0;
-  border: 1px solid #E6DCCF;
-  border-radius: 18px;
-  box-shadow: 0 8px 24px rgba(0,0,0,.06);
-}
-
-/* Comfortable padding */
-.bio-text{ padding: 22px; }
-.bio-sidebar{
-  padding: 16px;
-  display: flex;
-  justify-content: center;
-}
-
-/* Prevent LinkedIn container from collapsing before script paints */
-.bio-sidebar .badge-base,
-.bio-sidebar .LI-profile-badge{
-  display: block;
-  width: 100%;
-  max-width: 320px;
-  min-height: 340px;
-}
-
-/* Tablet/desktop: two columns, badge on the right */
-@media (min-width: 900px){
-  .bio-flex{
-    display: grid;
-    grid-template-columns: 1.6fr 0.9fr;
-    gap: 24px;
-    align-items: start;
-  }
-  .bio-sidebar{ position: sticky; top: 16px; } /* optional: nice UX */
-}
-
-/* Small phones: reduce the badge's reserved height so it doesn’t push content */
-@media (max-width: 380px){
-  .bio-sidebar .badge-base,
-  .bio-sidebar .LI-profile-badge{ min-height: 300px; }
-}
-
-
-
-
