@@ -412,3 +412,74 @@ hr{
   .nav-bar li{ min-width: 0; padding: 4px 6px; box-sizing: border-box; }
 }
 
+/* ===== Simple color accents (drop-in) ===== */
+
+/* Neutral base (keeps your cream vibe) */
+body { background: #FFF8EC; color: #1F1A14; }
+.content-wrapper { background: #FFF3E0; border: 1px solid #E6DCCF; }
+.main-content-body { background: #F6E9D4; border: 1px solid #E6DCCF; border-radius: 16px; }
+.portfolio-section {
+  position: relative;
+  background: #FFFFFF;
+  border: 2px solid #E6DCCF;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+.portfolio-section > h2 {
+  margin-top: 12px; /* leave space for ribbon */
+  padding-bottom: 6px;
+  border-bottom: 2px solid #E6DCCF;
+  color: #1F1A14;
+}
+
+/* Small solid ribbon bar at the top of each section */
+.ribbon {
+  height: 10px;
+  border-radius: 16px 16px 0 0;
+  margin: -24px -24px 12px -24px; /* stretches to card edges */
+}
+
+/* --- Accent colors (use on both .ribbon and .portfolio-section) --- */
+.blue   { --accent: #2268D6; }
+.rust   { --accent: #C65A2B; }
+.gold   { --accent: #F1B100; }
+.sage   { --accent: #3B8F7B; }
+.orchid { --accent: #9B3BB2; }
+
+/* Apply accent to border, heading rule, and ribbon */
+.portfolio-section.blue,
+.portfolio-section.rust,
+.portfolio-section.gold,
+.portfolio-section.sage,
+.portfolio-section.orchid {
+  border-color: var(--accent);
+}
+
+.portfolio-section.blue  > h2,
+.portfolio-section.rust  > h2,
+.portfolio-section.gold  > h2,
+.portfolio-section.sage  > h2,
+.portfolio-section.orchid> h2 {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.ribbon.blue   { background: #2268D6; }
+.ribbon.rust   { background: #C65A2B; }
+.ribbon.gold   { background: #F1B100; }
+.ribbon.sage   { background: #3B8F7B; }
+.ribbon.orchid { background: #9B3BB2; }
+
+/* Buttons: one default + easy color variants */
+.btn { background: #2268D6; color: #fff; border: 1px solid rgba(0,0,0,0.1); }
+.btn.rust   { background: #C65A2B; }
+.btn.gold   { background: #F1B100; color:#1F1A14; }
+.btn.sage   { background: #3B8F7B; }
+.btn.orchid { background: #9B3BB2; }
+
+/* Remove the old header shading if present */
+.header-content::before { content: none !important; }
+
+
+
