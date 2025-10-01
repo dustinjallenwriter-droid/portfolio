@@ -633,5 +633,56 @@ body { background: #FFF8EC; color: #1F1A14; }
 }
 
 
+/* ===== Subtle lavender theme (opt-in per page) ===== */
+:root{
+  --lavender-soft: #E7DFF7;  /* soft lavender */
+  --lavender-mid:  #CBB7EE;  /* mid lavender (rules/borders) */
+  --purple-deep:   #3B1C55;  /* headings/links */
+  --periwinkle:    #90B6E8;  /* headshot frame like PDF */
+}
+
+/* 1) Multi-ring frame on the main card (like your PDF) */
+.content-wrapper.frame-lavender{
+  border-radius: 24px;
+  /* keep your existing background; the rings are box-shadows */
+  box-shadow:
+    0 8px 28px rgba(0,0,0,0.10), /* drop shadow */
+    0 0 0 6px #FFFFFF,            /* thin white ring */
+    0 0 0 14px var(--lavender-mid), /* lavender ring */
+    0 0 0 20px var(--purple-deep);  /* deep purple ring */
+}
+
+/* 2) Header + nav accents */
+.frame-lavender .header-content h1{ color: var(--purple-deep); }
+.frame-lavender .header-content h2{ color: #223; opacity: .85; }
+
+.frame-lavender .nav-bar{
+  border-top: 2px solid var(--lavender-mid);
+  border-bottom: 2px solid var(--lavender-mid);
+}
+.frame-lavender .nav-bar a{ color: var(--purple-deep); }
+.frame-lavender .nav-bar li:hover{ background: var(--lavender-soft); }
+
+/* 3) Headings, links, and rules inside the page */
+.frame-lavender h2, 
+.frame-lavender h3{ color: var(--purple-deep); }
+.frame-lavender a{ color: var(--purple-deep); }
+.frame-lavender hr{ border-top: 2px solid var(--lavender-mid); }
+
+/* 4) Headshot frame like the PDF */
+.frame-lavender .image-section img{
+  background: #D8E6FA;
+  border: 10px solid var(--periwinkle);
+  border-radius: 18px;
+}
+
+/soften the main section background a hair */
+.frame-lavender .main-content,
+.frame-lavender .main-content-body{
+  background: #FFF6E9; /* still buttery, slightly lighter */
+  border: 1px solid #E6DCCF;
+  border-radius: 20px;
+}
+
 
 
