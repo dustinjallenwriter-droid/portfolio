@@ -393,3 +393,23 @@ hr{
 .ribbon.grayblue { background: #2E3A4F; }
 .portfolio-section.grayblue { border-color: #2E3A4F; }
 .portfolio-section.grayblue > h2 { color: #2E3A4F; border-bottom-color: #2E3A4F; }
+
+
+
+/* ----- Portfolio accent palette (exact mapping) ----- */
+.portfolio-section.green   { --accent:#2E7D5B; }  /* Hypernomicon */
+.portfolio-section.grayblue{ --accent:#0F3643; }  /* DICE.fm */
+.portfolio-section.yellow  { --accent:#F1B100; }  /* Jimmy’s */
+.portfolio-section.brown   { --accent:#6E4B3A; }  /* Barkerville (all) */
+.portfolio-section.darkred { --accent:#8E2C2A; }  /* TTCWatch */
+.portfolio-section.darkblue{ --accent:#1E3A8A; }  /* Personal projects */
+
+/* Use the accent everywhere on the card */
+.portfolio-section[class]{
+  border-color: var(--accent);
+}
+.portfolio-section[class] > h2{
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.ribbon{ background: var(--accent); }
