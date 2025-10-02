@@ -8,7 +8,6 @@
   <!-- Site CSS -->
   <link rel="stylesheet" href="app.css" />
 
-  <!-- Page-scoped fixes: sidebar stacks vertically; Murakami gets a neat card -->
   <style>
   .bio-flex{ gap:24px; }
 
@@ -45,19 +44,22 @@
     box-shadow:0 8px 24px rgba(0,0,0,.06);
     margin:0;                   /* ensure no extra gap from the card */
   }
-  .murakami-card img{
-    display:block;
-    width:100%;
-    max-width:240px;
-    height:auto;
-    border-radius:10px;
-    margin:0 auto 8px;
+    .murakami-card img{
+  display:block;
+  width:100%;
+  max-width:240px;
+  height:auto;
+  border-radius:10px;
+  margin:0 auto 10px;
+}
   }
   .murakami-card p{
     margin:0;
     font-size:.95rem;
     line-height:1.45;
   }
+
+ 
 
   /* mobile: stack columns */
   @media (max-width: 900px){
@@ -182,6 +184,7 @@
   </script>
 </body>
 </html>
+
 
 
 
