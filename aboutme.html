@@ -10,67 +10,74 @@
 
   <!-- Page-scoped fixes: sidebar stacks vertically; Murakami gets a neat card -->
   <style>
-    .bio-flex{ gap:24px; } /* small spacing polish */
+  .bio-flex{ gap:24px; }
 
+  .bio-sidebar{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;                   /* comfy by default (mobile/tablet) */
+    background:#FFF3E0;
+    border:1px solid #E6DCCF;
+    border-radius:18px;
+    padding:16px;
+    box-shadow:0 8px 24px rgba(0,0,0,.06);
+  }
+
+  /* keep badge space so column doesn't collapse before LI script paints */
+  .bio-sidebar .badge-base,
+  .bio-sidebar .LI-profile-badge{
+    display:block;
+    width:100%;
+    max-width:320px;
+    min-height:340px;
+    margin:0 !important;        /* kill any default badge margins */
+  }
+
+  .murakami-card{
+    width:100%;
+    max-width:320px;
+    text-align:center;
+    background:#FFF3E0;
+    border:1px solid #E6DCCF;
+    border-radius:14px;
+    padding:12px 14px;
+    box-shadow:0 8px 24px rgba(0,0,0,.06);
+    margin:0;                   /* ensure no extra gap from the card */
+  }
+  .murakami-card img{
+    display:block;
+    width:100%;
+    max-width:240px;
+    height:auto;
+    border-radius:10px;
+    margin:0 auto 8px;
+  }
+  .murakami-card p{
+    margin:0;
+    font-size:.95rem;
+    line-height:1.45;
+  }
+
+  /* mobile: stack columns */
+  @media (max-width: 900px){
+    .bio-flex{ display:flex; flex-direction:column; }
+  }
+
+  /* desktop: two columns + *tiny* gap between badge and book */
+  @media (min-width: 901px){
+    .bio-flex{
+      display:grid;
+      grid-template-columns: 1.6fr 0.9fr; /* text left, sidebar right */
+      align-items:start;
+    }
     .bio-sidebar{
-      display:flex;                 /* force vertical stack */
-      flex-direction:column;
-      align-items:center;
-      gap:16px;
-      background:#FFF3E0;           /* match site card look */
-      border:1px solid #E6DCCF;
-      border-radius:18px;
-      padding:16px;
-      box-shadow:0 8px 24px rgba(0,0,0,.06);
+      gap:4px;                  /* <<< nearly flush on desktop */
+      padding:12px 14px;        /* tighten padding a touch */
+      position:sticky; top:16px;
     }
-    /* keep badge space so it doesn’t collapse before LI script paints */
-    .bio-sidebar .badge-base,
-    .bio-sidebar .LI-profile-badge{
-      display:block;
-      width:100%;
-      max-width:320px;
-      min-height:340px;
-    }
-
-    .murakami-card{
-      width:100%;
-      max-width:320px;
-      text-align:center;
-      background:#FFF3E0;
-      border:1px solid #E6DCCF;
-      border-radius:14px;
-      padding:12px 14px;
-      box-shadow:0 8px 24px rgba(0,0,0,.06);
-    }
-    .murakami-card img{
-      display:block;
-      width:100%;
-      max-width:240px;
-      height:auto;
-      border-radius:10px;
-      margin:0 auto 10px;
-    }
-    .murakami-card p{
-      margin:0;
-      font-size:.95rem;
-      line-height:1.45;
-    }
-
-    /* mobile: stack columns */
-    @media (max-width: 900px){
-      .bio-flex{ display:flex; flex-direction:column; }
-    }
-    /* desktop: two columns */
-    @media (min-width: 901px){
-      .bio-flex{
-        display:grid;
-        grid-template-columns: 1.6fr 0.9fr; /* text left, sidebar right */
-        align-items:start;
-      }
-      .bio-sidebar{ position:sticky; top:16px; } /* optional nice UX */
-    }
-  </style>
-
+  }
+</style>
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Quicksand:wght@300..700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -175,6 +182,7 @@
   </script>
 </body>
 </html>
+
 
 
 
