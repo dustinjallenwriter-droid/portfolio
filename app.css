@@ -388,3 +388,8 @@ hr{
 .btn:active {
   color: #fff !important;   /* force white label on dark button */
 }
+
+/* DICE.fm = dark grey/blue */
+.ribbon.grayblue { background: #2E3A4F; }
+.portfolio-section.grayblue { border-color: #2E3A4F; }
+.portfolio-section.grayblue > h2 { color: #2E3A4F; border-bottom-color: #2E3A4F; }
