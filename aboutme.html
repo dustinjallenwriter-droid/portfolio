@@ -4,11 +4,77 @@
   <meta charset="UTF-8" />
   <title>About – Dustin J Allen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Site CSS -->
   <link rel="stylesheet" href="app.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Quicksand:wght@300..700&display=swap" rel="stylesheet" />
+
+  <!-- Page-scoped fixes: sidebar stacks vertically; Murakami gets a neat card -->
+  <style>
+    .bio-flex{ gap:24px; } /* small spacing polish */
+
+    .bio-sidebar{
+      display:flex;                 /* force vertical stack */
+      flex-direction:column;
+      align-items:center;
+      gap:16px;
+      background:#FFF3E0;           /* match site card look */
+      border:1px solid #E6DCCF;
+      border-radius:18px;
+      padding:16px;
+      box-shadow:0 8px 24px rgba(0,0,0,.06);
+    }
+    /* keep badge space so it doesn’t collapse before LI script paints */
+    .bio-sidebar .badge-base,
+    .bio-sidebar .LI-profile-badge{
+      display:block;
+      width:100%;
+      max-width:320px;
+      min-height:340px;
+    }
+
+    .murakami-card{
+      width:100%;
+      max-width:320px;
+      text-align:center;
+      background:#FFF3E0;
+      border:1px solid #E6DCCF;
+      border-radius:14px;
+      padding:12px 14px;
+      box-shadow:0 8px 24px rgba(0,0,0,.06);
+    }
+    .murakami-card img{
+      display:block;
+      width:100%;
+      max-width:240px;
+      height:auto;
+      border-radius:10px;
+      margin:0 auto 10px;
+    }
+    .murakami-card p{
+      margin:0;
+      font-size:.95rem;
+      line-height:1.45;
+    }
+
+    /* mobile: stack columns */
+    @media (max-width: 900px){
+      .bio-flex{ display:flex; flex-direction:column; }
+    }
+    /* desktop: two columns */
+    @media (min-width: 901px){
+      .bio-flex{
+        display:grid;
+        grid-template-columns: 1.6fr 0.9fr; /* text left, sidebar right */
+        align-items:start;
+      }
+      .bio-sidebar{ position:sticky; top:16px; } /* optional nice UX */
+    }
+  </style>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Quicksand:wght@300..700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 </head>
 <body>
   <main>
@@ -62,35 +128,37 @@
               </p>
             </div>
 
-          <aside class="bio-sidebar">
-            <!-- LinkedIn badge -->
-            <div class="badge-base LI-profile-badge"
-                 data-locale="en_US" data-size="medium" data-theme="dark"
-                 data-type="VERTICAL" data-vanity="dustin-j-allen-a408104a" data-version="v1">
-              <a class="badge-base__link LI-simple-link"
-                 href="https://ca.linkedin.com/in/dustin-j-allen-a408104a?trk=profile-badge"></a>
-            </div>
-          
-            <!-- Spaghetti Murakami (under the badge) -->
-            <figure class="media" style="margin-top:16px">
-              <img src="spaghettimurakami.png"
-                   alt="Spaghetti Murakami — literary cookbook concept cover"
-                   loading="lazy">
-              <figcaption>
-                I’m deep in the thick of writing and designing a literary cookbook. It’s
-                based on the works of the Japanese metaphysical fiction writer Haruki
-                Murakami, featuring some of the dishes that appear in his works.
-                <em>Spaghetti Murakami</em> coming soon.
-              </figcaption>
-            </figure>
-          </aside>
+            <aside class="bio-sidebar">
+              <!-- LinkedIn badge (renders via script below) -->
+              <div class="badge-base LI-profile-badge"
+                   data-locale="en_US" data-size="medium" data-theme="dark"
+                   data-type="VERTICAL" data-vanity="dustin-j-allen-a408104a" data-version="v1">
+                <a class="badge-base__link LI-simple-link"
+                   href="https://ca.linkedin.com/in/dustin-j-allen-a408104a?trk=profile-badge"></a>
+              </div>
+
+              <!-- Spaghetti Murakami (below the badge) -->
+              <div class="murakami-card">
+                <img src="spaghettimurakami.png"
+                     alt="Spaghetti Murakami — literary cookbook cover preview"
+                     loading="lazy">
+                <p>
+                  I’m deep in the thick of writing and designing a literary cookbook. It’s based on the works of the Japanese
+                  metaphysical fiction writer Haruki Murakami, featuring some of the dishes that appear in his works.
+                  <strong>Spaghetti Murakami coming soon.</strong>
+                </p>
+              </div>
+            </aside>
           </div>
         </section>
       </div>
     </div>
   </main>
 
+  <!-- LinkedIn badge script (must be after the badge markup) -->
   <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+
+  <!-- External/PDF link safety -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const here = location.hostname;
@@ -107,10 +175,6 @@
   </script>
 </body>
 </html>
-
-
-
-
 
 
 
