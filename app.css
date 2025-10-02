@@ -413,3 +413,52 @@ hr{
   border-bottom-color: var(--accent);
 }
 .ribbon{ background: var(--accent); }
+
+
+/* ========== Index symmetry fix ========== */
+
+/* Base stack on mobile */
+.main-content{
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+
+/* Left column stays a card */
+.bio-section{
+  background:#FFF3E0;
+  border:1px solid #E6DCCF;
+  border-radius:20px;
+  padding:24px;
+  box-shadow:0 8px 24px rgba(0,0,0,.06);
+}
+
+/* Right column: make the headshot a matching card */
+.image-section{
+  background:#FFF3E0;                 /* same as .bio-section */
+  border:1px solid #E6DCCF;
+  border-radius:20px;                  /* same corner radius */
+  padding:24px;                        /* same inner padding */
+  box-shadow:0 8px 24px rgba(0,0,0,.06);
+  display:flex;
+  align-items:center;                  /* center the photo inside */
+  justify-content:center;
+}
+
+/* Headshot sizing (theme-purple border you already have still applies) */
+.image-section img{
+  width:100%;
+  max-width:320px;
+  height:auto;
+  border-radius:14px;                  /* inner radius to look balanced */
+}
+
+/* Tablet/desktop: side-by-side, aligned from the top */
+@media (min-width:768px){
+  .main-content{
+    flex-direction:row;
+    align-items:flex-start;            /* top edges line up */
+  }
+  .bio-section{  flex:2 1 460px; }
+  .image-section{flex:1 1 320px; min-width:260px; }
+}
